@@ -9,7 +9,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-          primarySwatch: Colors.red, textTheme: GoogleFonts.robotoTextTheme()),
+          primarySwatch: Colors.blue, textTheme: GoogleFonts.robotoTextTheme()),
       debugShowCheckedModeBanner: false,
       home: const LoginPage(),
     );
