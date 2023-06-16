@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trilhaapp/repositories/languages_repository.dart';
 import 'package:trilhaapp/repositories/level_repository.dart';
 import 'package:trilhaapp/shared/widgets/text_label.dart';
 
@@ -16,10 +17,14 @@ class _RegistrationDataPageState extends State<RegistrationDataPage> {
   var levelRepository = LevelRepository();
   var levels = [];
   var selectedLevel = "";
+  var languagesRepository = LanguagesRepository();
+  var languages = [];
+  var selectedLanguage = [];
 
   @override
   void initState() {
     levels = levelRepository.returnLevels();
+    languages = languagesRepository.returnLanguages();
     super.initState();
   }
 
@@ -31,8 +36,7 @@ class _RegistrationDataPageState extends State<RegistrationDataPage> {
         ),
         body: Padding(
           padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          child: ListView(
             children: [
               const TextLabel(text: "Nome"),
               TextField(
@@ -67,6 +71,26 @@ class _RegistrationDataPageState extends State<RegistrationDataPage> {
                           setState(() {
                             selectedLevel = value;
                           });
+                        }))
+                    .toList(),
+              ),
+              const TextLabel(text: "Linguagens preferidas"),
+              Column(
+                children: languages
+                    .map((language) => CheckboxListTile(
+                        dense: true,
+                        title: Text(language),
+                        value: selectedLanguage.contains(language),
+                        onChanged: (bool? value) {
+                          if (value!) {
+                            setState(() {
+                              selectedLanguage.add(language);
+                            });
+                          } else {
+                            setState(() {
+                              selectedLanguage.remove(language);
+                            });
+                          }
                         }))
                     .toList(),
               ),
