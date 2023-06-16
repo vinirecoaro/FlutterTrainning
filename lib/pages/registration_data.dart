@@ -20,12 +20,25 @@ class _RegistrationDataPageState extends State<RegistrationDataPage> {
   var languagesRepository = LanguagesRepository();
   var languages = [];
   var selectedLanguage = [];
+  double selectedSalary = 0;
+  int experienceTime = 0;
 
   @override
   void initState() {
     levels = levelRepository.returnLevels();
     languages = languagesRepository.returnLanguages();
     super.initState();
+  }
+
+  List<DropdownMenuItem> returnItens(int maxValue) {
+    var itens = <DropdownMenuItem>[];
+    for (var i = 0; i <= maxValue; i++) {
+      itens.add(DropdownMenuItem(
+        child: Text(i.toString()),
+        value: i,
+      ));
+    }
+    return itens;
   }
 
   @override
@@ -94,10 +107,36 @@ class _RegistrationDataPageState extends State<RegistrationDataPage> {
                         }))
                     .toList(),
               ),
+              const TextLabel(text: "Tempo de experiencia"),
+              DropdownButton(
+                  value: experienceTime,
+                  isExpanded: true,
+                  items: returnItens(50),
+                  onChanged: (value) {
+                    setState(() {
+                      experienceTime = int.parse(value.toString());
+                    });
+                  }),
+              TextLabel(
+                  text:
+                      "Pretenção salarial. R\$ ${selectedSalary.round().toString()}"),
+              Slider(
+                  min: 0,
+                  max: 10000,
+                  value: selectedSalary,
+                  onChanged: (double value) {
+                    setState(() {
+                      selectedSalary = value;
+                    });
+                  }),
               TextButton(
                 onPressed: () {
                   debugPrint(nameController.text);
                   debugPrint(birthday.toString());
+                  debugPrint(selectedLevel.toString());
+                  debugPrint(selectedLanguage.toString());
+                  debugPrint(experienceTime.toString());
+                  debugPrint(selectedSalary.round().toString());
                 },
                 child: const Text("Salvar"),
               )
