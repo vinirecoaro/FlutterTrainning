@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trilhaapp/repositories/level_repository.dart';
 import 'package:trilhaapp/shared/widgets/text_label.dart';
 
 class RegistrationDataPage extends StatefulWidget {
@@ -12,24 +13,30 @@ class _RegistrationDataPageState extends State<RegistrationDataPage> {
   var nameController = TextEditingController(text: "");
   var birthdayController = TextEditingController(text: "");
   DateTime? birthday;
+  var levelRepository = LevelRepository();
+  var levels = [];
+  var selectedLevel = "";
+
+  @override
+  void initState() {
+    levels = levelRepository.returnLevels();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Meus Dados"),
+          title: const Text("Meus Dados"),
         ),
         body: Padding(
-          padding: EdgeInsets.symmetric(vertical: 12, horizontal: 8),
+          padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const TextLabel(text: "Nome"),
               TextField(
                 controller: nameController,
-              ),
-              SizedBox(
-                height: 10,
               ),
               const TextLabel(text: "Data de Nascimento"),
               TextField(
@@ -47,12 +54,28 @@ class _RegistrationDataPageState extends State<RegistrationDataPage> {
                   }
                 },
               ),
+              const TextLabel(text: "Nivel de experiência"),
+              Column(
+                children: levels
+                    .map((level) => RadioListTile(
+                        title: Text(level),
+                        selected: selectedLevel == level,
+                        value: level,
+                        groupValue: selectedLevel,
+                        onChanged: (value) {
+                          print(value);
+                          setState(() {
+                            selectedLevel = value;
+                          });
+                        }))
+                    .toList(),
+              ),
               TextButton(
                 onPressed: () {
-                  print(nameController.text);
-                  print(birthday.toString());
+                  debugPrint(nameController.text);
+                  debugPrint(birthday.toString());
                 },
-                child: Text("Salvar"),
+                child: const Text("Salvar"),
               )
             ],
           ),
