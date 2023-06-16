@@ -61,7 +61,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 Container(
                   width: double.infinity,
-                  margin: EdgeInsets.symmetric(horizontal: 30),
+                  margin: const EdgeInsets.symmetric(horizontal: 30),
                   height: 30,
                   alignment: Alignment.center,
                   child: TextField(
@@ -91,7 +91,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 Container(
                   width: double.infinity,
-                  margin: EdgeInsets.symmetric(horizontal: 30),
+                  margin: const EdgeInsets.symmetric(horizontal: 30),
                   height: 30,
                   alignment: Alignment.center,
                   child: TextField(
@@ -125,7 +125,7 @@ class _LoginPageState extends State<LoginPage> {
                             isObscureText
                                 ? Icons.visibility_off
                                 : Icons.visibility,
-                            color: Color.fromARGB(255, 125, 33, 148),
+                            color: const Color.fromARGB(255, 125, 33, 148),
                           ),
                         )),
                   ),
