@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:trilhaapp/pages/list_view_h.dart';
+import 'package:trilhaapp/pages/task_page.dart';
 import 'package:trilhaapp/shared/widgets/custom_drawer.dart';
 
-import 'page1.dart';
-import 'page2.dart';
-import 'page3.dart';
+import 'card_page.dart';
+import 'image_assets.dart';
+import 'list_view.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -32,13 +34,16 @@ class _MainPageState extends State<MainPage> {
                   });
                 },
                 children: const [
-                  Page1(),
-                  Page2(),
-                  Page3(),
+                  CardPage(),
+                  ImageAssetsPage(),
+                  ListViewPage(),
+                  ListViewHorizontalPage(),
+                  TaskPage()
                 ],
               ),
             ),
             BottomNavigationBar(
+              type: BottomNavigationBarType.fixed,
               onTap: (value) {
                 controller.jumpToPage(value);
               },
@@ -48,6 +53,8 @@ class _MainPageState extends State<MainPage> {
                 BottomNavigationBarItem(label: "Page2", icon: Icon(Icons.add)),
                 BottomNavigationBarItem(
                     label: "Page3", icon: Icon(Icons.person)),
+                BottomNavigationBarItem(label: "Page4", icon: Icon(Icons.list)),
+                BottomNavigationBarItem(label: "Page5", icon: Icon(Icons.task)),
               ],
             )
           ],
