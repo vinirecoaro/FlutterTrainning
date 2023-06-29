@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:trilhaapp/repositories/languages_repository.dart';
 import 'package:trilhaapp/repositories/level_repository.dart';
+import 'package:trilhaapp/service/app_storage_serveice.dart';
 import 'package:trilhaapp/shared/widgets/text_label.dart';
 
 class RegistrationDataPage extends StatefulWidget {
@@ -19,17 +20,41 @@ class _RegistrationDataPageState extends State<RegistrationDataPage> {
   var selectedLevel = "";
   var languagesRepository = LanguagesRepository();
   var languages = [];
-  var selectedLanguage = [];
+  List<String> selectedLanguage = [];
   double selectedSalary = 0;
   int experienceTime = 0;
 
+  final String REGISTRATION_DATA_NAME_KEY = "REGISTRATION_DATA_NAME_KEY";
+  final String REGISTRATION_DATA_BIRTHDAY_KEY =
+      "REGISTRATION_DATA_BIRTHDAY_KEY";
+  final String REGISTRATION_DATA_EXPERIENCE_LEVEL_KEY =
+      "REGISTRATION_DATA_EXPERIENCE_LEVEL_KEY";
+  final String REGISTRATION_DATA_LANGUAGES_KEY =
+      "REGISTRATION_DATA_LANGUAGES_KEY";
+  final String REGISTRATION_DATA_EXPERIENCE_TIME_KEY =
+      "REGISTRATION_DATA_EXPERIENCE_TIME_KEY";
+  final String REGISTRATION_DATA_SALARY_KEY = "REGISTRATION_DATA_SALARY_KEY";
+
   bool saving = false;
+
+  AppStorageService storage = AppStorageService();
 
   @override
   void initState() {
     levels = levelRepository.returnLevels();
     languages = languagesRepository.returnLanguages();
     super.initState();
+    loadData();
+  }
+
+  void loadData() async {
+    nameController.text = await storage.getRegistrationDataName();
+    birthdayController.text = await storage.getRegistrationDataBirthday();
+    selectedLevel = await storage.getRegistrationDataExperienceLevel();
+    selectedLanguage = await storage.getRegistrationDataLanguages();
+    experienceTime = await storage.getRegistrationDataExperienceTime();
+    selectedSalary = await storage.getRegistrationDataSalary();
+    setState(() {});
   }
 
   List<DropdownMenuItem> returnItens(int maxValue) {
@@ -134,7 +159,7 @@ class _RegistrationDataPageState extends State<RegistrationDataPage> {
                           });
                         }),
                     TextButton(
-                      onPressed: () {
+                      onPressed: () async {
                         setState(() {
                           saving = false;
                         });
@@ -177,6 +202,16 @@ class _RegistrationDataPageState extends State<RegistrationDataPage> {
                                   "A pretenção salarial deve ser maior que 0")));
                           return;
                         }
+                        await storage
+                            .setRegistrationDataName(nameController.text);
+                        await storage.setRegistrationDataBirthday(birthday!);
+                        await storage
+                            .setRegistrationDataExperienceLevel(selectedLevel);
+                        await storage
+                            .setRegistrationDataLanguages(selectedLanguage);
+                        await storage
+                            .setRegistrationDataExperienceTime(experienceTime);
+                        await storage.setRegistrationDataSalary(selectedSalary);
 
                         setState(() {
                           saving = true;
