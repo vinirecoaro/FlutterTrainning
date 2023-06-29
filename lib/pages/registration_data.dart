@@ -24,17 +24,6 @@ class _RegistrationDataPageState extends State<RegistrationDataPage> {
   double selectedSalary = 0;
   int experienceTime = 0;
 
-  final String REGISTRATION_DATA_NAME_KEY = "REGISTRATION_DATA_NAME_KEY";
-  final String REGISTRATION_DATA_BIRTHDAY_KEY =
-      "REGISTRATION_DATA_BIRTHDAY_KEY";
-  final String REGISTRATION_DATA_EXPERIENCE_LEVEL_KEY =
-      "REGISTRATION_DATA_EXPERIENCE_LEVEL_KEY";
-  final String REGISTRATION_DATA_LANGUAGES_KEY =
-      "REGISTRATION_DATA_LANGUAGES_KEY";
-  final String REGISTRATION_DATA_EXPERIENCE_TIME_KEY =
-      "REGISTRATION_DATA_EXPERIENCE_TIME_KEY";
-  final String REGISTRATION_DATA_SALARY_KEY = "REGISTRATION_DATA_SALARY_KEY";
-
   bool saving = false;
 
   AppStorageService storage = AppStorageService();

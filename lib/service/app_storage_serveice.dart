@@ -6,10 +6,49 @@ enum STORAGE_KEYS {
   REGISTRATION_DATA_EXPERIENCE_LEVEL_KEY,
   REGISTRATION_DATA_LANGUAGES_KEY,
   REGISTRATION_DATA_EXPERIENCE_TIME_KEY,
-  REGISTRATION_DATA_SALARY_KEY
+  REGISTRATION_DATA_SALARY_KEY,
+  CONFIGURATIONS_USER_NAME_KEY,
+  CONFIGURATIONS_HEIGHT_KEY,
+  CONFIGURATIONS_RECEIVE_PULL_NOTIFICATION_KEY,
+  CONFIGURATIONS_DARK_THEME_KEY
 }
 
 class AppStorageService {
+  Future<void> setconfigurationsName(String name) async {
+    _setString(STORAGE_KEYS.CONFIGURATIONS_USER_NAME_KEY.toString(), name);
+  }
+
+  Future<String> getconfigurationsName() async {
+    return _getString(STORAGE_KEYS.CONFIGURATIONS_USER_NAME_KEY.toString());
+  }
+
+  Future<void> setconfigurationsHeight(double height) async {
+    _setDouble(STORAGE_KEYS.CONFIGURATIONS_HEIGHT_KEY.toString(), height);
+  }
+
+  Future<double> getconfigurationsHeight() async {
+    return _getDouble(STORAGE_KEYS.CONFIGURATIONS_HEIGHT_KEY.toString());
+  }
+
+  Future<void> setconfigurationsReceivePullNotification(bool value) async {
+    _setBool(
+        STORAGE_KEYS.CONFIGURATIONS_RECEIVE_PULL_NOTIFICATION_KEY.toString(),
+        value);
+  }
+
+  Future<bool> getconfigurationsReceivePullNotification() async {
+    return _getBool(
+        STORAGE_KEYS.CONFIGURATIONS_RECEIVE_PULL_NOTIFICATION_KEY.toString());
+  }
+
+  Future<void> setconfigurationsDarkTheme(bool value) async {
+    _setBool(STORAGE_KEYS.CONFIGURATIONS_DARK_THEME_KEY.toString(), value);
+  }
+
+  Future<bool> getconfigurationsDarkTheme() async {
+    return _getBool(STORAGE_KEYS.CONFIGURATIONS_DARK_THEME_KEY.toString());
+  }
+
   Future<void> setRegistrationDataName(String name) async {
     _setString(STORAGE_KEYS.REGISTRATION_DATA_NAME_KEY.toString(), name);
   }

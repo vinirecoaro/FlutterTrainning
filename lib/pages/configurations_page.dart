@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:trilhaapp/service/app_storage_serveice.dart';
 
 class ConfigurationsPage extends StatefulWidget {
   const ConfigurationsPage({super.key});
@@ -9,7 +9,7 @@ class ConfigurationsPage extends StatefulWidget {
 }
 
 class _ConfigurationsPageState extends State<ConfigurationsPage> {
-  late SharedPreferences storage;
+  AppStorageService storage = AppStorageService();
 
   TextEditingController userNameController = TextEditingController();
   TextEditingController heightController = TextEditingController();
@@ -19,11 +19,6 @@ class _ConfigurationsPageState extends State<ConfigurationsPage> {
   bool receivePushNotification = false;
   bool darkTheme = false;
 
-  final USER_NAME_KEY = "user_name_key";
-  final HEIGHT_KEY = "height_key";
-  final RECEIVE_PULL_NOTIFICATION_KEY = "receive_pull_notification_key";
-  final DARK_THEME_KEY = "dark_theme_key";
-
   @override
   void initState() {
     super.initState();
@@ -31,14 +26,13 @@ class _ConfigurationsPageState extends State<ConfigurationsPage> {
   }
 
   void loadData() async {
-    storage = await SharedPreferences.getInstance();
-    setState(() {
-      userNameController.text = storage.getString(USER_NAME_KEY) ?? "";
-      heightController.text = (storage.getDouble(HEIGHT_KEY) ?? 0).toString();
-      receivePushNotification =
-          storage.getBool(RECEIVE_PULL_NOTIFICATION_KEY) ?? false;
-      darkTheme = storage.getBool(DARK_THEME_KEY) ?? false;
-    });
+    userNameController.text = await storage.getConfigurationsName();
+    heightController.text =
+        (await (storage.getConfigurationsHeight())).toString();
+    receivePushNotification =
+        await storage.getConfigurationsReceivePullNotification();
+    darkTheme = await storage.getConfigurationsDarkTheme();
+    setState(() {});
   }
 
   @override
@@ -88,8 +82,8 @@ class _ConfigurationsPageState extends State<ConfigurationsPage> {
                   onPressed: () async {
                     FocusManager.instance.primaryFocus?.unfocus();
                     try {
-                      await storage.setDouble(
-                          HEIGHT_KEY, double.parse(heightController.text));
+                      await storage.setConfigurationsHeight(
+                          double.parse(heightController.text));
                     } catch (e) {
                       showDialog(
                           context: context,
@@ -109,12 +103,11 @@ class _ConfigurationsPageState extends State<ConfigurationsPage> {
                           });
                       return;
                     }
-                    await storage.setString(
-                        USER_NAME_KEY, userNameController.text);
-
-                    await storage.setBool(
-                        RECEIVE_PULL_NOTIFICATION_KEY, receivePushNotification);
-                    await storage.setBool(DARK_THEME_KEY, darkTheme);
+                    await storage
+                        .setConfigurationsName(userNameController.text);
+                    await storage.setConfigurationsReceivePullNotification(
+                        receivePushNotification);
+                    await storage.setConfigurationsDarkTheme(darkTheme);
                     Navigator.pop(context);
                   },
                   style: ButtonStyle(
