@@ -10,42 +10,60 @@ enum STORAGE_KEYS {
   CONFIGURATIONS_USER_NAME_KEY,
   CONFIGURATIONS_HEIGHT_KEY,
   CONFIGURATIONS_RECEIVE_PULL_NOTIFICATION_KEY,
-  CONFIGURATIONS_DARK_THEME_KEY
+  CONFIGURATIONS_DARK_THEME_KEY,
+  RANDOM_NUMBER_KEY,
+  CLICK_AMOUNT_KEY
 }
 
 class AppStorageService {
-  Future<void> setconfigurationsName(String name) async {
+  Future<void> setClickAmount(int value) async {
+    _setInt(STORAGE_KEYS.CLICK_AMOUNT_KEY.toString(), value);
+  }
+
+  Future<int> getClickAmount() async {
+    return _getInt(STORAGE_KEYS.CLICK_AMOUNT_KEY.toString());
+  }
+
+  Future<void> setRandomNumber(int value) async {
+    _setInt(STORAGE_KEYS.RANDOM_NUMBER_KEY.toString(), value);
+  }
+
+  Future<int> getRandomNumber() async {
+    return _getInt(STORAGE_KEYS.RANDOM_NUMBER_KEY.toString());
+  }
+
+  Future<void> setConfigurationsName(String name) async {
     _setString(STORAGE_KEYS.CONFIGURATIONS_USER_NAME_KEY.toString(), name);
   }
 
-  Future<String> getconfigurationsName() async {
+  Future<String> getConfigurationsName() async {
     return _getString(STORAGE_KEYS.CONFIGURATIONS_USER_NAME_KEY.toString());
   }
 
-  Future<void> setconfigurationsHeight(double height) async {
+  Future<void> setConfigurationsHeight(double height) async {
     _setDouble(STORAGE_KEYS.CONFIGURATIONS_HEIGHT_KEY.toString(), height);
   }
 
-  Future<double> getconfigurationsHeight() async {
+  Future<double> getConfigurationsHeight() async {
     return _getDouble(STORAGE_KEYS.CONFIGURATIONS_HEIGHT_KEY.toString());
   }
 
-  Future<void> setconfigurationsReceivePullNotification(bool value) async {
+  Future<void> setConfigurationsReceivePullNotification(bool value) async {
     _setBool(
         STORAGE_KEYS.CONFIGURATIONS_RECEIVE_PULL_NOTIFICATION_KEY.toString(),
         value);
   }
 
-  Future<bool> getconfigurationsReceivePullNotification() async {
+  Future<bool> getConfigurationsReceivePullNotification() async {
     return _getBool(
         STORAGE_KEYS.CONFIGURATIONS_RECEIVE_PULL_NOTIFICATION_KEY.toString());
   }
 
-  Future<void> setconfigurationsDarkTheme(bool value) async {
+  Future<void> setConfigurationsDarkTheme(bool value) async {
     _setBool(STORAGE_KEYS.CONFIGURATIONS_DARK_THEME_KEY.toString(), value);
   }
 
-  Future<bool> getconfigurationsDarkTheme() async {
+  Future<bool> getConfigurationsDarkTheme() async {
     return _getBool(STORAGE_KEYS.CONFIGURATIONS_DARK_THEME_KEY.toString());
   }
 

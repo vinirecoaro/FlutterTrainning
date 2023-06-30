@@ -1,7 +1,6 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:trilhaapp/service/app_storage_serveice.dart';
 
 class RandomNumbersPage extends StatefulWidget {
   const RandomNumbersPage({super.key});
@@ -11,11 +10,9 @@ class RandomNumbersPage extends StatefulWidget {
 }
 
 class _RandomNumbersPageState extends State<RandomNumbersPage> {
-  int? generetedNumber;
-  int? clickAmount;
-  final RANDOM_NUMBER_KEY = "random_number";
-  final CLICK_AMOUNT_KEY = "click_amount";
-  late SharedPreferences storage;
+  int generetedNumber = 0;
+  int clickAmount = 0;
+  AppStorageService storage = AppStorageService();
 
   @override
   void initState() {
@@ -25,11 +22,9 @@ class _RandomNumbersPageState extends State<RandomNumbersPage> {
   }
 
   void loadData() async {
-    storage = await SharedPreferences.getInstance();
-    setState(() {
-      generetedNumber = storage.getInt(RANDOM_NUMBER_KEY);
-      clickAmount = storage.getInt(CLICK_AMOUNT_KEY);
-    });
+    generetedNumber = await storage.getRandomNumber();
+    clickAmount = await storage.getClickAmount();
+    setState(() {});
   }
 
   @override
@@ -63,10 +58,10 @@ class _RandomNumbersPageState extends State<RandomNumbersPage> {
             var random = Random();
             setState(() {
               generetedNumber = random.nextInt(1000);
-              clickAmount = (clickAmount ?? 0) + 1;
+              clickAmount = clickAmount + 1;
             });
-            storage.setInt(RANDOM_NUMBER_KEY, generetedNumber!);
-            storage.setInt(CLICK_AMOUNT_KEY, clickAmount!);
+            storage.setRandomNumber(generetedNumber);
+            storage.setClickAmount(clickAmount);
           }),
     ));
   }

@@ -39,6 +39,7 @@ class _RegistrationDataPageState extends State<RegistrationDataPage> {
   void loadData() async {
     nameController.text = await storage.getRegistrationDataName();
     birthdayController.text = await storage.getRegistrationDataBirthday();
+    birthday = DateTime.parse(birthdayController.text);
     selectedLevel = await storage.getRegistrationDataExperienceLevel();
     selectedLanguage = await storage.getRegistrationDataLanguages();
     experienceTime = await storage.getRegistrationDataExperienceTime();
