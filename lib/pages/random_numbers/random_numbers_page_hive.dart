@@ -1,18 +1,18 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:trilhaapp/service/app_storage_serveice.dart';
+import 'package:hive/hive.dart';
 
-class RandomNumbersPage extends StatefulWidget {
-  const RandomNumbersPage({super.key});
+class RandomNumbersHivePage extends StatefulWidget {
+  const RandomNumbersHivePage({super.key});
 
   @override
-  State<RandomNumbersPage> createState() => _RandomNumbersPageState();
+  State<RandomNumbersHivePage> createState() => _RandomNumbersHivePageState();
 }
 
-class _RandomNumbersPageState extends State<RandomNumbersPage> {
+class _RandomNumbersHivePageState extends State<RandomNumbersHivePage> {
   int generetedNumber = 0;
   int clickAmount = 0;
-  AppStorageService storage = AppStorageService();
+  late Box randomNumberBox;
 
   @override
   void initState() {
@@ -22,8 +22,14 @@ class _RandomNumbersPageState extends State<RandomNumbersPage> {
   }
 
   void loadData() async {
-    generetedNumber = await storage.getRandomNumber();
-    clickAmount = await storage.getClickAmount();
+    if (Hive.isBoxOpen("random_number_box")) {
+      randomNumberBox = Hive.box("random_number_box");
+    } else {
+      randomNumberBox = await Hive.openBox("random_number_box");
+    }
+    generetedNumber = randomNumberBox.get("genereted_number") ?? 0;
+    clickAmount = randomNumberBox.get("click_amount") ?? 0;
+
     setState(() {});
   }
 
@@ -31,22 +37,18 @@ class _RandomNumbersPageState extends State<RandomNumbersPage> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-      appBar: AppBar(title: const Text("Gerador de números aleatórios")),
+      appBar: AppBar(title: const Text("Hive")),
       body: Container(
         alignment: Alignment.center,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              generetedNumber == null
-                  ? "Nenhum número gerado"
-                  : generetedNumber.toString(),
+              generetedNumber.toString(),
               style: const TextStyle(fontSize: 22),
             ),
             Text(
-              clickAmount == null
-                  ? "Nenhum clique efetuado"
-                  : clickAmount.toString(),
+              clickAmount.toString(),
               style: const TextStyle(fontSize: 22),
             ),
           ],
@@ -60,8 +62,8 @@ class _RandomNumbersPageState extends State<RandomNumbersPage> {
               generetedNumber = random.nextInt(1000);
               clickAmount = clickAmount + 1;
             });
-            storage.setRandomNumber(generetedNumber);
-            storage.setClickAmount(clickAmount);
+            randomNumberBox.put("genereted_number", generetedNumber);
+            randomNumberBox.put("click_amount", clickAmount);
           }),
     ));
   }

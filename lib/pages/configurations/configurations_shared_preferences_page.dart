@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:trilhaapp/service/app_storage_serveice.dart';
 
-class ConfigurationsPage extends StatefulWidget {
-  const ConfigurationsPage({super.key});
+class ConfigurationsSharedPreferencesPage extends StatefulWidget {
+  const ConfigurationsSharedPreferencesPage({super.key});
 
   @override
-  State<ConfigurationsPage> createState() => _ConfigurationsPageState();
+  State<ConfigurationsSharedPreferencesPage> createState() =>
+      _ConfigurationsSharedPreferencesPageState();
 }
 
-class _ConfigurationsPageState extends State<ConfigurationsPage> {
+class _ConfigurationsSharedPreferencesPageState
+    extends State<ConfigurationsSharedPreferencesPage> {
   AppStorageService storage = AppStorageService();
 
   TextEditingController userNameController = TextEditingController();

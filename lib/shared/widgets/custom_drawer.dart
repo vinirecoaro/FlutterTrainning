@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:trilhaapp/pages/configurations_page.dart';
+import 'package:trilhaapp/pages/configurations/configurations_hive_page.dart';
 import 'package:trilhaapp/pages/login_page.dart';
-import 'package:trilhaapp/pages/random_numbers_page.dart';
-
+import 'package:trilhaapp/pages/random_numbers/random_numbers_page_hive.dart';
 import '../../pages/registration_data.dart';
 
 class CustonDrawer extends StatelessWidget {
@@ -145,7 +144,7 @@ class CustonDrawer extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (bc) => const RandomNumbersPage()));
+                      builder: (bc) => const RandomNumbersHivePage()));
             },
           ),
           const SizedBox(
@@ -169,7 +168,7 @@ class CustonDrawer extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (bc) => const ConfigurationsPage()));
+                      builder: (bc) => const ConfigurationsHivePage()));
             },
           ),
           const Divider(),
