@@ -1,22 +1,22 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:flutter/material.dart';
-import 'package:trilhaapp/repositories/task_repository.dart';
+import 'package:trilhaapp/model/task_hive_model.dart';
+import 'package:trilhaapp/repositories/task_hive_repository.dart';
 
-import '../model/task.dart';
-
-class TaskPage extends StatefulWidget {
-  const TaskPage({super.key});
+class TaskHivePage extends StatefulWidget {
+  const TaskHivePage({super.key});
 
   @override
-  State<TaskPage> createState() => _TaskPageState();
+  State<TaskHivePage> createState() => _TaskHivePageState();
 }
 
-class _TaskPageState extends State<TaskPage> {
-  var _tasks = const <Task>[];
+class _TaskHivePageState extends State<TaskHivePage> {
+  var _tasks = const <TaskHiveModel>[];
   var descriptionController = TextEditingController();
-  var taskRepository = TaskRepository();
   var justNotConcluded = false;
+
+  late TaskHiveRepository taskRepository;
 
   @override
   void initState() {
@@ -25,11 +25,8 @@ class _TaskPageState extends State<TaskPage> {
   }
 
   void getTasks() async {
-    if (justNotConcluded) {
-      _tasks = await taskRepository.returnNotConcludedTasks();
-    } else {
-      _tasks = await taskRepository.returnTaskList();
-    }
+    taskRepository = await TaskHiveRepository.load();
+    _tasks = taskRepository.obtainData(justNotConcluded);
     setState(() {});
   }
 
@@ -55,9 +52,10 @@ class _TaskPageState extends State<TaskPage> {
                         child: const Text("Cancelar")),
                     TextButton(
                         onPressed: () async {
-                          await taskRepository
-                              .addTask(Task(descriptionController.text, false));
+                          await taskRepository.save(TaskHiveModel.create(
+                              descriptionController.text, false));
                           Navigator.pop(context);
+                          getTasks();
                           setState(() {});
                         },
                         child: const Text("Salvar"))
@@ -97,15 +95,16 @@ class _TaskPageState extends State<TaskPage> {
                     var task = _tasks[index];
                     return Dismissible(
                       onDismissed: (DismissDirection dismissDirection) async {
-                        await taskRepository.removeTask(task.id);
+                        await taskRepository.delete(task);
                         getTasks();
                       },
-                      key: Key(task.id),
+                      key: Key(task.description),
                       child: ListTile(
                         title: Text(task.description),
                         trailing: Switch(
                           onChanged: (bool value) async {
-                            await taskRepository.changeTask(task.id, value);
+                            task.concluded = value;
+                            taskRepository.change(task);
                             getTasks();
                           },
                           value: task.concluded,
