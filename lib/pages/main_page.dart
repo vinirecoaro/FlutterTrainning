@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:trilhaapp/pages/list_view_h.dart';
 import 'package:trilhaapp/pages/task/task_hive_page.dart';
+import 'package:trilhaapp/pages/task/task_sqlite_page.dart';
 import 'package:trilhaapp/shared/widgets/custom_drawer.dart';
 
 import 'card_page.dart';
@@ -38,7 +39,7 @@ class _MainPageState extends State<MainPage> {
                   ImageAssetsPage(),
                   ListViewPage(),
                   ListViewHorizontalPage(),
-                  TaskHivePage()
+                  TaskSQlitePage()
                 ],
               ),
             ),
