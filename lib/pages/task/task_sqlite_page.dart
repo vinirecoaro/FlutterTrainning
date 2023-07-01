@@ -1,10 +1,8 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:flutter/material.dart';
-import 'package:trilhaapp/model/task_hive_model.dart';
 import 'package:trilhaapp/model/task_sqlite_model.dart';
 import 'package:trilhaapp/repositories/sqlite/task_sqlite_repository.dart';
-import 'package:trilhaapp/repositories/task_hive_repository.dart';
 
 class TaskSQlitePage extends StatefulWidget {
   const TaskSQlitePage({super.key});
