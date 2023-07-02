@@ -34,6 +34,6 @@ class TaskSQLiteRepository {
 
   Future<void> remove(int id) async {
     var db = await SQLiteDataBase().getDatabase();
-    await db.rawInsert('DELETE FROM tasks WHERE id = ?', [id]);
+    await db.rawDelete('DELETE FROM tasks WHERE id = ?', [id]);
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:trilhaapp/pages/list_view_h.dart';
 import 'package:trilhaapp/pages/task/task_sqlite_page.dart';
+import 'package:trilhaapp/pages/zip_code_query.dart';
 import 'package:trilhaapp/shared/widgets/custom_drawer.dart';
 import 'card_page.dart';
 import 'image_assets.dart';
@@ -33,6 +34,7 @@ class _MainPageState extends State<MainPage> {
                   });
                 },
                 children: const [
+                  ZipCodeQueryPage(),
                   CardPage(),
                   ImageAssetsPage(),
                   ListViewPage(),
@@ -48,6 +50,8 @@ class _MainPageState extends State<MainPage> {
               },
               currentIndex: pagePosition,
               items: const [
+                BottomNavigationBarItem(
+                    label: "HTTP", icon: Icon(Icons.get_app_rounded)),
                 BottomNavigationBarItem(label: "Page1", icon: Icon(Icons.home)),
                 BottomNavigationBarItem(label: "Page2", icon: Icon(Icons.add)),
                 BottomNavigationBarItem(
