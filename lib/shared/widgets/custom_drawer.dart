@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:trilhaapp/pages/configurations/configurations_hive_page.dart';
 import 'package:trilhaapp/pages/login_page.dart';
+import 'package:trilhaapp/pages/post_page.dart';
 import 'package:trilhaapp/pages/random_numbers/random_numbers_page_hive.dart';
 import '../../pages/registration_data/registration_data_hive.dart';
 
@@ -169,6 +170,29 @@ class CustonDrawer extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                       builder: (bc) => const ConfigurationsHivePage()));
+            },
+          ),
+          const Divider(),
+          const SizedBox(
+            height: 10,
+          ),
+          InkWell(
+            child: Container(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                width: double.infinity,
+                child: const Row(
+                  children: [
+                    Icon(Icons.post_add),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    Text("Posts"),
+                  ],
+                )),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (bc) => const PostsPage()));
             },
           ),
           const Divider(),
