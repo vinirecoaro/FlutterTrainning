@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:trilhaapp/model/viacep_model.dart';
 
 class ZipCodeQueryPage extends StatefulWidget {
   const ZipCodeQueryPage({super.key});
@@ -10,9 +13,9 @@ class ZipCodeQueryPage extends StatefulWidget {
 
 class _ZipCodeQueryPageState extends State<ZipCodeQueryPage> {
   var zipCodeController = TextEditingController(text: "");
-  String address = "";
-  String city = "";
-  String state = "";
+  bool loading = false;
+
+  var viacepModel = ViaCEPModel();
 
   @override
   Widget build(BuildContext context) {
@@ -29,31 +32,34 @@ class _ZipCodeQueryPageState extends State<ZipCodeQueryPage> {
             TextField(
               controller: zipCodeController,
               keyboardType: TextInputType.number,
-              onChanged: (String value) {
+              onChanged: (String value) async {
                 var cep = value.replaceAll(new RegExp(r'[^0-9]'), '');
                 if (cep.length >= 8) {
-                  address = "Endereco";
-                  city = "Cidade";
-                  state = "Estado";
-                } else {
-                  address = "";
-                  city = "";
-                  state = "";
-                }
-                setState(() {});
+                  setState(() {
+                    loading = true;
+                  });
+                  var response = await http
+                      .get(Uri.parse("https://viacep.com.br/ws/$cep/json/"));
+                  var json = jsonDecode(response.body);
+                  viacepModel = ViaCEPModel.fromJson(json);
+                } else {}
+                setState(() {
+                  loading = false;
+                });
               },
             ),
             const SizedBox(
               height: 50,
             ),
             Text(
-              address,
+              viacepModel.logradouro ?? "",
               style: TextStyle(fontSize: 22),
             ),
             Text(
-              "$city - $state",
+              "${viacepModel.localidade ?? ""} - ${viacepModel.uf ?? ""}",
               style: TextStyle(fontSize: 22),
             ),
+            Visibility(visible: loading, child: CircularProgressIndicator())
           ],
         ),
       ),
