@@ -1,8 +1,6 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 import 'package:trilhaapp/model/viacep_model.dart';
+import 'package:trilhaapp/repositories/viacep_repository.dart';
 
 class ZipCodeQueryPage extends StatefulWidget {
   const ZipCodeQueryPage({super.key});
@@ -16,6 +14,7 @@ class _ZipCodeQueryPageState extends State<ZipCodeQueryPage> {
   bool loading = false;
 
   var viacepModel = ViaCEPModel();
+  var viaCepRepository = ViaCepRepository();
 
   @override
   Widget build(BuildContext context) {
@@ -38,10 +37,7 @@ class _ZipCodeQueryPageState extends State<ZipCodeQueryPage> {
                   setState(() {
                     loading = true;
                   });
-                  var response = await http
-                      .get(Uri.parse("https://viacep.com.br/ws/$cep/json/"));
-                  var json = jsonDecode(response.body);
-                  viacepModel = ViaCEPModel.fromJson(json);
+                  viacepModel = await viaCepRepository.consultarCEP(cep);
                 } else {}
                 setState(() {
                   loading = false;
@@ -53,21 +49,18 @@ class _ZipCodeQueryPageState extends State<ZipCodeQueryPage> {
             ),
             Text(
               viacepModel.logradouro ?? "",
-              style: TextStyle(fontSize: 22),
+              style: const TextStyle(fontSize: 22),
             ),
             Text(
               "${viacepModel.localidade ?? ""} - ${viacepModel.uf ?? ""}",
-              style: TextStyle(fontSize: 22),
+              style: const TextStyle(fontSize: 22),
             ),
             Visibility(visible: loading, child: CircularProgressIndicator())
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () async {
-          var response = await http.get(Uri.parse("https://www.google.com"));
-          print(response);
-        },
+        onPressed: () async {},
         child: const Icon(Icons.add),
       ),
     ));
