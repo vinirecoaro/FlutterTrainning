@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:trilhaapp/model/comment_model.dart';
+import 'package:trilhaapp/repositories/comments/comment_repository.dart';
 
-import '../repositories/comment_http_repository.dart';
+import '../repositories/comments/impl/comment_dio_repository.dart';
+import '../repositories/comments/impl/comment_http_repository.dart';
 
 class CommentsPage extends StatefulWidget {
   final int postId;
@@ -12,13 +14,13 @@ class CommentsPage extends StatefulWidget {
 }
 
 class _CommentsPageState extends State<CommentsPage> {
-  var commentRepository = CommentHttpRepository();
+  late CommentsRepository commentRepository;
   var comments = <CommentModel>[];
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
+    commentRepository = CommentDioRepository();
     loadData();
   }
 
