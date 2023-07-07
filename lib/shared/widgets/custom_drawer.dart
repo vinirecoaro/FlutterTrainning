@@ -206,6 +206,29 @@ class CustonDrawer extends StatelessWidget {
                 width: double.infinity,
                 child: const Row(
                   children: [
+                    Icon(Icons.fireplace),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    Text("Heróis"),
+                  ],
+                )),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (bc) => const PostsPage()));
+            },
+          ),
+          const Divider(),
+          const SizedBox(
+            height: 10,
+          ),
+          InkWell(
+            child: Container(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                width: double.infinity,
+                child: const Row(
+                  children: [
                     Icon(Icons.exit_to_app),
                     SizedBox(
                       width: 20,
