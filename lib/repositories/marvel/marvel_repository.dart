@@ -6,13 +6,13 @@ import 'package:trilhaapp/model/characters_model.dart';
 import 'package:crypto/crypto.dart' as crypto;
 
 class MarvelRepository {
-  Future<CharactersModel> getCharacters() async {
+  Future<CharactersModel> getCharacters(int offset) async {
     var dio = Dio();
     var ts = DateTime.now().microsecondsSinceEpoch.toString();
     var publicKey = dotenv.get("MARVELPUBLICKEY");
     var privateKey = dotenv.get("MARVELAPIKEY");
     var hash = _generateMd5(ts + privateKey + publicKey);
-    var query = "ts=$ts&apikey=$publicKey&hash=$hash";
+    var query = "offset=$offset&ts=$ts&apikey=$publicKey&hash=$hash";
     var result = await dio
         .get("https://gateway.marvel.com:443/v1/public/characters?$query");
     var charactersModel = CharactersModel.fromJson(result.data);
