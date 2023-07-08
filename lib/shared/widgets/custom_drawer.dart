@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trilhaapp/pages/characters/characters_page.dart';
 import 'package:trilhaapp/pages/configurations/configurations_hive_page.dart';
 import 'package:trilhaapp/pages/login_page.dart';
 import 'package:trilhaapp/pages/post_page.dart';
@@ -214,8 +215,9 @@ class CustonDrawer extends StatelessWidget {
                   ],
                 )),
             onTap: () {
+              Navigator.pop(context);
               Navigator.push(context,
-                  MaterialPageRoute(builder: (bc) => const PostsPage()));
+                  MaterialPageRoute(builder: (bc) => const CharactersPage()));
             },
           ),
           const Divider(),
