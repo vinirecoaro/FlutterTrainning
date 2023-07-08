@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:hive/hive.dart';
 import 'package:trilhaapp/model/task_hive_model.dart';
 import 'model/registration_data_model.dart';
@@ -12,5 +13,6 @@ void main() async {
   Hive.init(documentsDirectory.path);
   Hive.registerAdapter(RegistrationDataModelAdapter());
   Hive.registerAdapter(TaskHiveModelAdapter());
+  await dotenv.load(fileName: ".env");
   runApp(const MyApp());
 }
