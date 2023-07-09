@@ -4,7 +4,7 @@ import 'package:trilhaapp/pages/configurations/configurations_hive_page.dart';
 import 'package:trilhaapp/pages/login_page.dart';
 import 'package:trilhaapp/pages/post_page.dart';
 import 'package:trilhaapp/pages/random_numbers/random_numbers_page_hive.dart';
-import 'package:trilhaapp/repositories/back4app/tasks_back4app_repository.dart';
+import 'package:trilhaapp/pages/task/task_http_page.dart';
 import '../../pages/registration_data/registration_data_hive.dart';
 
 class CustonDrawer extends StatelessWidget {
@@ -240,12 +240,9 @@ class CustonDrawer extends StatelessWidget {
                   ],
                 )),
             onTap: () async {
-              var task = TasksBack4appRepository();
-              var tasks = await task.obtainTasks();
-              print(tasks);
               Navigator.pop(context);
-              // Navigator.push(context,
-              //     MaterialPageRoute(builder: (bc) => const CharactersPage()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (bc) => const TaskHttpPage()));
             },
           ),
           const Divider(),
