@@ -58,8 +58,8 @@ class _TaskHttpPageState extends State<TaskHttpPage> {
                         child: const Text("Cancelar")),
                     TextButton(
                         onPressed: () async {
-                          // await taskRepository.save(TaskSQLiteModel(
-                          //     0, descriptionController.text, false));
+                          await taskRepository.create(TaskBack4appModel.create(
+                              descriptionController.text, false));
                           Navigator.pop(context);
                           getTasks();
                           setState(() {});
@@ -104,7 +104,7 @@ class _TaskHttpPageState extends State<TaskHttpPage> {
                           return Dismissible(
                             onDismissed:
                                 (DismissDirection dismissDirection) async {
-                              //await taskRepository.remove(task.id);
+                              await taskRepository.remove(task.objectId);
                               getTasks();
                             },
                             key: Key(task.description),
@@ -113,7 +113,7 @@ class _TaskHttpPageState extends State<TaskHttpPage> {
                               trailing: Switch(
                                 onChanged: (bool value) async {
                                   task.concluded = value;
-                                  //taskRepository.update(task);
+                                  await taskRepository.update(task);
                                   getTasks();
                                 },
                                 value: task.concluded,

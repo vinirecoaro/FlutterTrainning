@@ -29,6 +29,11 @@ class TaskBack4appModel {
   TaskBack4appModel(this.objectId, this.description, this.concluded,
       this.createdAt, this.updatedAt);
 
+  TaskBack4appModel.create(
+    this.description,
+    this.concluded,
+  );
+
   TaskBack4appModel.fromJson(Map<String, dynamic> json) {
     objectId = json['objectId'];
     description = json['description'];
@@ -44,6 +49,20 @@ class TaskBack4appModel {
     data['concluded'] = concluded;
     data['createdAt'] = createdAt;
     data['updatedAt'] = updatedAt;
+    return data;
+  }
+
+  Map<String, dynamic> toCreateJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['description'] = description;
+    data['concluded'] = concluded;
+    return data;
+  }
+
+  Map<String, dynamic> toJsonEndpoint() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['description'] = description;
+    data['concluded'] = concluded;
     return data;
   }
 }
