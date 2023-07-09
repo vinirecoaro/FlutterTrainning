@@ -15,14 +15,25 @@ class _CharactersPageState extends State<CharactersPage> {
   int offset = 0;
   var loading = false;
 
+  ScrollController _scrollController = ScrollController();
+
   @override
   void initState() {
+    _scrollController.addListener(() {
+      var positionToPaging = _scrollController.position.maxScrollExtent * 0.7;
+      if (_scrollController.position.pixels > positionToPaging) {
+        loadData();
+      }
+      print(_scrollController.position.pixels);
+      print(_scrollController.position.maxScrollExtent);
+    });
     marvelRepository = MarvelRepository();
     super.initState();
     loadData();
   }
 
   loadData() async {
+    if (loading) return;
     if (characters.data == null || characters.data!.results == null) {
       characters = await marvelRepository.getCharacters(offset);
     } else {
@@ -65,6 +76,7 @@ class _CharactersPageState extends State<CharactersPage> {
         children: [
           Expanded(
             child: ListView.builder(
+                controller: _scrollController,
                 itemCount: (characters.data == null ||
                         characters.data!.results == null)
                     ? 0

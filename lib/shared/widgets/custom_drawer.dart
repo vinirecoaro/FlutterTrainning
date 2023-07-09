@@ -4,6 +4,7 @@ import 'package:trilhaapp/pages/configurations/configurations_hive_page.dart';
 import 'package:trilhaapp/pages/login_page.dart';
 import 'package:trilhaapp/pages/post_page.dart';
 import 'package:trilhaapp/pages/random_numbers/random_numbers_page_hive.dart';
+import 'package:trilhaapp/repositories/back4app/tasks_back4app_repository.dart';
 import '../../pages/registration_data/registration_data_hive.dart';
 
 class CustonDrawer extends StatelessWidget {
@@ -12,8 +13,8 @@ class CustonDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: ListView(
+        //crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           InkWell(
             onTap: () {
@@ -218,6 +219,33 @@ class CustonDrawer extends StatelessWidget {
               Navigator.pop(context);
               Navigator.push(context,
                   MaterialPageRoute(builder: (bc) => const CharactersPage()));
+            },
+          ),
+          const Divider(),
+          const SizedBox(
+            height: 10,
+          ),
+          InkWell(
+            child: Container(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                width: double.infinity,
+                child: const Row(
+                  children: [
+                    Icon(Icons.fireplace),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    Text("Tarefas HTTP"),
+                  ],
+                )),
+            onTap: () async {
+              var task = TasksBack4appRepository();
+              var tasks = await task.obtainTasks();
+              print(tasks);
+              Navigator.pop(context);
+              // Navigator.push(context,
+              //     MaterialPageRoute(builder: (bc) => const CharactersPage()));
             },
           ),
           const Divider(),
