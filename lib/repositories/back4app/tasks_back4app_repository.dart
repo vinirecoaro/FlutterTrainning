@@ -4,7 +4,7 @@ import 'package:trilhaapp/repositories/back4app/back4app_custon_dio.dart';
 class TasksBack4appRepository {
   final _custonDio = Back4appCutonDio();
 
-  TasksBack4appRepository() {}
+  TasksBack4appRepository();
 
   Future<TasksBack4appModel> obtainTasks(bool justNotConcluded) async {
     var url = "/Tasks";
