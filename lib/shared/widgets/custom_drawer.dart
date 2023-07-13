@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:trilhaapp/pages/characters/characters_page.dart';
 import 'package:trilhaapp/pages/configurations/configurations_hive_page.dart';
 import 'package:trilhaapp/pages/login_page.dart';
 import 'package:trilhaapp/pages/post_page.dart';
 import 'package:trilhaapp/pages/random_numbers/random_numbers_page_hive.dart';
 import 'package:trilhaapp/pages/task/task_http_page.dart';
+import 'package:trilhaapp/pages/tests/percent_indicator_page.dart';
 import '../../pages/registration_data/registration_data_hive.dart';
 
 class CustonDrawer extends StatelessWidget {
@@ -160,7 +162,7 @@ class CustonDrawer extends StatelessWidget {
                 width: double.infinity,
                 child: const Row(
                   children: [
-                    Icon(Icons.engineering),
+                    FaIcon(FontAwesomeIcons.toolbox),
                     SizedBox(
                       width: 20,
                     ),
@@ -243,6 +245,32 @@ class CustonDrawer extends StatelessWidget {
               Navigator.pop(context);
               Navigator.push(context,
                   MaterialPageRoute(builder: (bc) => const TaskHttpPage()));
+            },
+          ),
+          const Divider(),
+          const SizedBox(
+            height: 10,
+          ),
+          InkWell(
+            child: Container(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                width: double.infinity,
+                child: const Row(
+                  children: [
+                    Icon(Icons.percent),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    Text("Indicadores de porcentagem"),
+                  ],
+                )),
+            onTap: () async {
+              Navigator.pop(context);
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (bc) => const PercentIndicatorPage()));
             },
           ),
           const Divider(),
