@@ -48,6 +48,9 @@ dependencies:
   percent_indicator: ^4.2.3
   auto_size_text: ^3.0.0
   animated_text_kit: ^4.2.2
+  convex_bottom_bar: ^3.1.0+1
+  brasil_fields: ^1.6.0
+  easy_localization: ^3.0.1
 
 dev_dependencies:
   flutter_launcher_icons: ^0.13.1

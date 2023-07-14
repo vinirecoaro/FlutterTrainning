@@ -14,7 +14,7 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
     return SafeArea(
         child: Scaffold(
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: LinearGradient(
               colors: [Colors.green, Colors.purple],
               //stops: [0.7, 0.3],
