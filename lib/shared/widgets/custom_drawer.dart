@@ -8,6 +8,7 @@ import 'package:trilhaapp/pages/post_page.dart';
 import 'package:trilhaapp/pages/random_numbers/random_numbers_page_hive.dart';
 import 'package:trilhaapp/pages/task/task_http_page.dart';
 import 'package:trilhaapp/pages/tests/auto_size_text_page.dart';
+import 'package:trilhaapp/pages/tests/battery_page.dart';
 import 'package:trilhaapp/pages/tests/percent_indicator_page.dart';
 import '../../pages/registration_data/registration_data_hive.dart';
 
@@ -324,6 +325,29 @@ class CustonDrawer extends StatelessWidget {
                   context.setLocale(Locale('pt', 'BR'));
                 }
                 Navigator.pop(context);
+              }),
+          const Divider(),
+          const SizedBox(
+            height: 10,
+          ),
+          InkWell(
+              child: Container(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                  width: double.infinity,
+                  child: const Row(
+                    children: [
+                      Icon(Icons.battery_0_bar),
+                      SizedBox(
+                        width: 20,
+                      ),
+                      Text("Bateria"),
+                    ],
+                  )),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (bc) => const BatteryPage()));
               }),
           const Divider(),
           const SizedBox(

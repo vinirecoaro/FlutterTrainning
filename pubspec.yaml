@@ -52,6 +52,7 @@ dependencies:
   brasil_fields: ^1.6.0
   easy_localization: ^3.0.2
   intl: ^0.18.0
+  battery_plus: ^2.2.1
 
 
 dev_dependencies:
