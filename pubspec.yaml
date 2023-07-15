@@ -50,7 +50,9 @@ dependencies:
   animated_text_kit: ^4.2.2
   convex_bottom_bar: ^3.1.0+1
   brasil_fields: ^1.6.0
-  easy_localization: ^3.0.1
+  easy_localization: ^3.0.2
+  intl: ^0.18.0
+
 
 dev_dependencies:
   flutter_launcher_icons: ^0.13.1
@@ -86,6 +88,7 @@ flutter:
     - lib/images/view1.jpeg
     - lib/images/view2.jpeg
     - lib/images/view3.jpeg
+    - assets/translations/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

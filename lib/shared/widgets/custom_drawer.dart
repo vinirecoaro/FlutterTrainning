@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:trilhaapp/pages/characters/characters_page.dart';
@@ -298,6 +299,32 @@ class CustonDrawer extends StatelessWidget {
                   MaterialPageRoute(builder: (bc) => const AutoSizeTextPage()));
             },
           ),
+          const Divider(),
+          const SizedBox(
+            height: 10,
+          ),
+          InkWell(
+              child: Container(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                  width: double.infinity,
+                  child: const Row(
+                    children: [
+                      Icon(Icons.flag),
+                      SizedBox(
+                        width: 20,
+                      ),
+                      Text("pt-BR"),
+                    ],
+                  )),
+              onTap: () {
+                if (context.locale.toString() == "pt_BR") {
+                  context.setLocale(Locale('en', 'US'));
+                } else {
+                  context.setLocale(Locale('pt', 'BR'));
+                }
+                Navigator.pop(context);
+              }),
           const Divider(),
           const SizedBox(
             height: 10,
