@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:trilhaapp/pages/characters/characters_page.dart';
 import 'package:trilhaapp/pages/configurations/configurations_hive_page.dart';
 import 'package:trilhaapp/pages/login_page.dart';
@@ -391,6 +392,27 @@ class CustonDrawer extends StatelessWidget {
                   )),
               onTap: () async {
                 await launchUrl(Uri.parse("https://www.google.com.br/maps"));
+              }),
+          const Divider(),
+          const SizedBox(
+            height: 10,
+          ),
+          InkWell(
+              child: Container(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                  width: double.infinity,
+                  child: const Row(
+                    children: [
+                      Icon(Icons.share),
+                      SizedBox(
+                        width: 20,
+                      ),
+                      Text("Compartilhar"),
+                    ],
+                  )),
+              onTap: () {
+                Share.share('De uma olhada nesse site https://dio.me');
               }),
           const Divider(),
           const SizedBox(

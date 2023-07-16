@@ -54,6 +54,7 @@ dependencies:
   intl: ^0.18.0
   battery_plus: ^2.2.1
   url_launcher: ^6.1.12
+  share_plus: ^5.0.0
 
 
 dev_dependencies:
