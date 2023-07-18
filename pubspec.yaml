@@ -57,6 +57,7 @@ dependencies:
   share_plus: ^5.0.0
   connectivity_plus: ^2.3.6
   geolocator: ^9.0.2
+  qr_code_scanner: ^1.0.1
 
 
 

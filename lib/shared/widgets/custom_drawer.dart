@@ -14,6 +14,7 @@ import 'package:trilhaapp/pages/tests/battery_page.dart';
 import 'package:trilhaapp/pages/tests/connectivity_plus_page.dart';
 import 'package:trilhaapp/pages/tests/geolocator_page.dart';
 import 'package:trilhaapp/pages/tests/percent_indicator_page.dart';
+import 'package:trilhaapp/pages/tests/qr_code_page.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../pages/registration_data/registration_data_hive.dart';
 
@@ -484,6 +485,29 @@ class CustonDrawer extends StatelessWidget {
                 Navigator.pop(context);
                 Navigator.push(context,
                     MaterialPageRoute(builder: (bc) => GeolocatorPage()));
+              }),
+          const Divider(),
+          const SizedBox(
+            height: 10,
+          ),
+          InkWell(
+              child: Container(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                  width: double.infinity,
+                  child: const Row(
+                    children: [
+                      Icon(Icons.qr_code),
+                      SizedBox(
+                        width: 20,
+                      ),
+                      Text("Qr Code"),
+                    ],
+                  )),
+              onTap: () async {
+                Navigator.pop(context);
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (bc) => QrCodePage()));
               }),
           const Divider(),
           const SizedBox(
