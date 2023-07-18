@@ -1,3 +1,4 @@
+import 'package:path_provider/path_provider.dart' as path;
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -10,6 +11,7 @@ import 'package:trilhaapp/pages/random_numbers/random_numbers_page_hive.dart';
 import 'package:trilhaapp/pages/task/task_http_page.dart';
 import 'package:trilhaapp/pages/tests/auto_size_text_page.dart';
 import 'package:trilhaapp/pages/tests/battery_page.dart';
+import 'package:trilhaapp/pages/tests/connectivity_plus_page.dart';
 import 'package:trilhaapp/pages/tests/percent_indicator_page.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../pages/registration_data/registration_data_hive.dart';
@@ -413,6 +415,51 @@ class CustonDrawer extends StatelessWidget {
                   )),
               onTap: () {
                 Share.share('De uma olhada nesse site https://dio.me');
+              }),
+          const Divider(),
+          const SizedBox(
+            height: 10,
+          ),
+          InkWell(
+              child: Container(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                  width: double.infinity,
+                  child: const Row(
+                    children: [
+                      Icon(Icons.arrow_back),
+                      SizedBox(
+                        width: 20,
+                      ),
+                      Text("Path"),
+                    ],
+                  )),
+              onTap: () async {
+                var directory = await path.getTemporaryDirectory();
+                print(directory.path);
+              }),
+          const Divider(),
+          const SizedBox(
+            height: 10,
+          ),
+          InkWell(
+              child: Container(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                  width: double.infinity,
+                  child: const Row(
+                    children: [
+                      Icon(Icons.wifi),
+                      SizedBox(
+                        width: 20,
+                      ),
+                      Text("Conexão"),
+                    ],
+                  )),
+              onTap: () async {
+                Navigator.pop(context);
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (bc) => ConnectivityPlusPage()));
               }),
           const Divider(),
           const SizedBox(
