@@ -12,6 +12,7 @@ import 'package:trilhaapp/pages/task/task_http_page.dart';
 import 'package:trilhaapp/pages/tests/auto_size_text_page.dart';
 import 'package:trilhaapp/pages/tests/battery_page.dart';
 import 'package:trilhaapp/pages/tests/connectivity_plus_page.dart';
+import 'package:trilhaapp/pages/tests/geolocator_page.dart';
 import 'package:trilhaapp/pages/tests/percent_indicator_page.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../pages/registration_data/registration_data_hive.dart';
@@ -460,6 +461,29 @@ class CustonDrawer extends StatelessWidget {
                 Navigator.pop(context);
                 Navigator.push(context,
                     MaterialPageRoute(builder: (bc) => ConnectivityPlusPage()));
+              }),
+          const Divider(),
+          const SizedBox(
+            height: 10,
+          ),
+          InkWell(
+              child: Container(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                  width: double.infinity,
+                  child: const Row(
+                    children: [
+                      Icon(Icons.map_outlined),
+                      SizedBox(
+                        width: 20,
+                      ),
+                      Text("GPS"),
+                    ],
+                  )),
+              onTap: () async {
+                Navigator.pop(context);
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (bc) => GeolocatorPage()));
               }),
           const Divider(),
           const SizedBox(
