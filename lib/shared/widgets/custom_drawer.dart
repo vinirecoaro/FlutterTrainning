@@ -11,6 +11,7 @@ import 'package:trilhaapp/pages/random_numbers/random_numbers_page_hive.dart';
 import 'package:trilhaapp/pages/task/task_http_page.dart';
 import 'package:trilhaapp/pages/tests/auto_size_text_page.dart';
 import 'package:trilhaapp/pages/tests/battery_page.dart';
+import 'package:trilhaapp/pages/tests/camera_page.dart';
 import 'package:trilhaapp/pages/tests/connectivity_plus_page.dart';
 import 'package:trilhaapp/pages/tests/geolocator_page.dart';
 import 'package:trilhaapp/pages/tests/percent_indicator_page.dart';
@@ -326,9 +327,9 @@ class CustonDrawer extends StatelessWidget {
                   )),
               onTap: () {
                 if (context.locale.toString() == "pt_BR") {
-                  context.setLocale(Locale('en', 'US'));
+                  context.setLocale(const Locale('en', 'US'));
                 } else {
-                  context.setLocale(Locale('pt', 'BR'));
+                  context.setLocale(const Locale('pt', 'BR'));
                 }
                 Navigator.pop(context);
               }),
@@ -461,7 +462,7 @@ class CustonDrawer extends StatelessWidget {
               onTap: () async {
                 Navigator.pop(context);
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (bc) => ConnectivityPlusPage()));
+                    MaterialPageRoute(builder: (bc) => const ConnectivityPlusPage()));
               }),
           const Divider(),
           const SizedBox(
@@ -484,7 +485,7 @@ class CustonDrawer extends StatelessWidget {
               onTap: () async {
                 Navigator.pop(context);
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (bc) => GeolocatorPage()));
+                    MaterialPageRoute(builder: (bc) => const GeolocatorPage()));
               }),
           const Divider(),
           const SizedBox(
@@ -507,7 +508,30 @@ class CustonDrawer extends StatelessWidget {
               onTap: () async {
                 Navigator.pop(context);
                 Navigator.push(
-                    context, MaterialPageRoute(builder: (bc) => QrCodePage()));
+                    context, MaterialPageRoute(builder: (bc) => const QrCodePage()));
+              }),
+          const Divider(),
+          const SizedBox(
+            height: 10,
+          ),
+          InkWell(
+              child: Container(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                  width: double.infinity,
+                  child: const Row(
+                    children: [
+                      Icon(Icons.camera),
+                      SizedBox(
+                        width: 20,
+                      ),
+                      Text("Camera"),
+                    ],
+                  )),
+              onTap: () async {
+                Navigator.pop(context);
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (bc) => const CameraPage()));
               }),
           const Divider(),
           const SizedBox(

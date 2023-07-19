@@ -15,7 +15,7 @@ class _PercentIndicatorPageState extends State<PercentIndicatorPage> {
     return SafeArea(
         child: Scaffold(
       appBar: AppBar(
-        title: Text("Página de Testes"),
+        title: const Text("Página de Testes"),
       ),
       body: Column(
         children: [
@@ -26,29 +26,29 @@ class _PercentIndicatorPageState extends State<PercentIndicatorPage> {
             center: const Text("50%"),
             progressColor: Colors.green,
           ),
-          new CircularPercentIndicator(
+          CircularPercentIndicator(
             radius: 130.0,
             animation: true,
             animationDuration: 1200,
             lineWidth: 15.0,
             percent: 0.4,
-            center: new Text(
+            center: const Text(
               "40 hours",
-              style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
             ),
             circularStrokeCap: CircularStrokeCap.butt,
             backgroundColor: Colors.yellow,
             progressColor: Colors.red,
           ),
           Padding(
-            padding: EdgeInsets.all(15.0),
-            child: new LinearPercentIndicator(
+            padding: const EdgeInsets.all(15.0),
+            child: LinearPercentIndicator(
               width: MediaQuery.of(context).size.width - 50,
               animation: true,
               lineHeight: 20.0,
               animationDuration: 2000,
               percent: 0.9,
-              center: Text("90.0%"),
+              center: const Text("90.0%"),
               linearStrokeCap: LinearStrokeCap.roundAll,
               progressColor: Colors.greenAccent,
             ),

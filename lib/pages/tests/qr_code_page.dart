@@ -34,7 +34,7 @@ class _QrCodePageState extends State<QrCodePage> {
     return SafeArea(
         child: Scaffold(
       appBar: AppBar(
-        title: Text("Qr Code"),
+        title: const Text("Qr Code"),
       ),
       body: Column(
         children: <Widget>[
@@ -51,7 +51,7 @@ class _QrCodePageState extends State<QrCodePage> {
               child: (result != null)
                   ? Text(
                       'Barcode Type: ${describeEnum(result!.format)}   Data: ${result!.code}')
-                  : Text('Scan a code'),
+                  : const Text('Scan a code'),
             ),
           )
         ],

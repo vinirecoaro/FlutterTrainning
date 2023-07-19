@@ -38,7 +38,7 @@ class _TaskHttpPageState extends State<TaskHttpPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Tarefas HTTP")),
+      appBar: AppBar(title: const Text("Tarefas HTTP")),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           descriptionController.text = "";

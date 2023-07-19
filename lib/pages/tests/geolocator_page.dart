@@ -55,7 +55,7 @@ class _GeolocatorPageState extends State<GeolocatorPage> {
     return SafeArea(
         child: Scaffold(
       appBar: AppBar(
-        title: Text("Geolocator"),
+        title: const Text("Geolocator"),
       ),
       body: Container(
         child: TextButton(
@@ -63,7 +63,7 @@ class _GeolocatorPageState extends State<GeolocatorPage> {
             Position position = await _determinePosition();
             print(position);
           },
-          child: Text("Obter posição"),
+          child: const Text("Obter posição"),
         ),
       ),
     ));

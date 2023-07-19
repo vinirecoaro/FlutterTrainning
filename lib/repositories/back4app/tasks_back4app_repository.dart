@@ -20,7 +20,7 @@ class TasksBack4appRepository {
       await _custonDio.dio
           .post("/Tasks", data: taskBack4appModel.toCreateJson());
     } catch (e) {
-      throw e;
+      rethrow;
     }
   }
 
@@ -29,15 +29,15 @@ class TasksBack4appRepository {
       await _custonDio.dio.put("/Tasks/${taskBack4appModel.objectId}",
           data: taskBack4appModel.toJsonEndpoint());
     } catch (e) {
-      throw e;
+      rethrow;
     }
   }
 
   Future<void> remove(String objectId) async {
     try {
-      await _custonDio.dio.delete("/Tasks/${objectId}");
+      await _custonDio.dio.delete("/Tasks/$objectId");
     } catch (e) {
-      throw e;
+      rethrow;
     }
   }
 }

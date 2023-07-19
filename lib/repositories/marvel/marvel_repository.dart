@@ -20,7 +20,7 @@ class MarvelRepository {
   }
 
   _generateMd5(String data) {
-    var content = new Utf8Encoder().convert(data);
+    var content = const Utf8Encoder().convert(data);
     var md5 = crypto.md5;
     var digest = md5.convert(content);
     return hex.encode(digest.bytes);

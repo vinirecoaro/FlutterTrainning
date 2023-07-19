@@ -17,11 +17,11 @@ class _BrasilFieldsPageState extends State<BrasilFieldsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("CEP"),
+            const Text("CEP"),
             TextFormField(
               controller: controllerCEP,
               keyboardType: TextInputType.number,
@@ -30,10 +30,10 @@ class _BrasilFieldsPageState extends State<BrasilFieldsPage> {
                 CepInputFormatter(),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
-            Text("CPF"),
+            const Text("CPF"),
             TextFormField(
               controller: controllerCPF,
               keyboardType: TextInputType.number,
@@ -42,10 +42,10 @@ class _BrasilFieldsPageState extends State<BrasilFieldsPage> {
                 CpfInputFormatter(),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
-            Text("Centavos"),
+            const Text("Centavos"),
             TextFormField(
               controller: controllerCentavos,
               keyboardType: TextInputType.number,
@@ -60,7 +60,7 @@ class _BrasilFieldsPageState extends State<BrasilFieldsPage> {
                       print(CPFValidator.isValid(controllerCPF.text));
                       print(CPFValidator.isValid(CPFValidator.generate()));
                     },
-                    child: Text("Continuar")))
+                    child: const Text("Continuar")))
           ],
         ),
       ),

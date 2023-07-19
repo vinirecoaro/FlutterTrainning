@@ -58,6 +58,8 @@ dependencies:
   connectivity_plus: ^2.3.6
   geolocator: ^9.0.2
   qr_code_scanner: ^1.0.1
+  image_picker: ^1.0.1
+  gallery_saver: ^2.3.2
 
 
 

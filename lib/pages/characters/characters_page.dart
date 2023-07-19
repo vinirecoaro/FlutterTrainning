@@ -15,7 +15,7 @@ class _CharactersPageState extends State<CharactersPage> {
   int offset = 0;
   var loading = false;
 
-  ScrollController _scrollController = ScrollController();
+  final ScrollController _scrollController = ScrollController();
 
   @override
   void initState() {
@@ -121,8 +121,8 @@ class _CharactersPageState extends State<CharactersPage> {
                   onPressed: () {
                     loadData();
                   },
-                  child: Text("Carregar mais itens"))
-              : CircularProgressIndicator()
+                  child: const Text("Carregar mais itens"))
+              : const CircularProgressIndicator()
         ],
       ),
     ));

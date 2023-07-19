@@ -22,34 +22,34 @@ class ViaCEPModel {
       String? ddd,
       String? siafi}) {
     if (cep != null) {
-      this._cep = cep;
+      _cep = cep;
     }
     if (logradouro != null) {
-      this._logradouro = logradouro;
+      _logradouro = logradouro;
     }
     if (complemento != null) {
-      this._complemento = complemento;
+      _complemento = complemento;
     }
     if (bairro != null) {
-      this._bairro = bairro;
+      _bairro = bairro;
     }
     if (localidade != null) {
-      this._localidade = localidade;
+      _localidade = localidade;
     }
     if (uf != null) {
-      this._uf = uf;
+      _uf = uf;
     }
     if (ibge != null) {
-      this._ibge = ibge;
+      _ibge = ibge;
     }
     if (gia != null) {
-      this._gia = gia;
+      _gia = gia;
     }
     if (ddd != null) {
-      this._ddd = ddd;
+      _ddd = ddd;
     }
     if (siafi != null) {
-      this._siafi = siafi;
+      _siafi = siafi;
     }
   }
 
@@ -88,17 +88,17 @@ class ViaCEPModel {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['cep'] = this._cep;
-    data['logradouro'] = this._logradouro;
-    data['complemento'] = this._complemento;
-    data['bairro'] = this._bairro;
-    data['localidade'] = this._localidade;
-    data['uf'] = this._uf;
-    data['ibge'] = this._ibge;
-    data['gia'] = this._gia;
-    data['ddd'] = this._ddd;
-    data['siafi'] = this._siafi;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['cep'] = _cep;
+    data['logradouro'] = _logradouro;
+    data['complemento'] = _complemento;
+    data['bairro'] = _bairro;
+    data['localidade'] = _localidade;
+    data['uf'] = _uf;
+    data['ibge'] = _ibge;
+    data['gia'] = _gia;
+    data['ddd'] = _ddd;
+    data['siafi'] = _siafi;
     return data;
   }
 }

@@ -35,9 +35,9 @@ class _CommentsPageState extends State<CommentsPage> {
         title: Text("Comentários do Post ${widget.postId}"),
       ),
       body: Container(
-        margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-        child: comments.length == 0
-            ? Center(child: CircularProgressIndicator())
+        margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        child: comments.isEmpty
+            ? const Center(child: CircularProgressIndicator())
             : ListView.builder(
                 itemCount: comments.length,
                 itemBuilder: (_, int index) {
@@ -46,7 +46,7 @@ class _CommentsPageState extends State<CommentsPage> {
                     child: Card(
                         child: Container(
                       padding:
-                          EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                          const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -57,7 +57,7 @@ class _CommentsPageState extends State<CommentsPage> {
                               Text(comment.email),
                             ],
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
                           Text(comment.body),

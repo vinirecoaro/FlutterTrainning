@@ -25,7 +25,7 @@ class _HomePage2State extends State<HomePage2> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: CustonDrawer(),
+      drawer: const CustonDrawer(),
       appBar: AppBar(
         title: Text(
           "APP_TITLE".tr(),
@@ -47,12 +47,12 @@ class _HomePage2State extends State<HomePage2> with TickerProviderStateMixin {
           Container(
             color: Colors.green,
           ),
-          BrasilFieldsPage()
+          const BrasilFieldsPage()
         ],
       ),
       bottomNavigationBar: ConvexAppBar.badge(
-        {0: '99+', 1: Icons.assistant_photo, 2: Colors.redAccent},
-        items: [
+        const {0: '99+', 1: Icons.assistant_photo, 2: Colors.redAccent},
+        items: const [
           TabItem(icon: Icons.home, title: 'Home'),
           TabItem(icon: Icons.map, title: 'Discovery'),
           TabItem(icon: Icons.add, title: 'Add'),

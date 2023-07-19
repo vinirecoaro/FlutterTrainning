@@ -55,7 +55,7 @@ class _ZipCodeQueryPageState extends State<ZipCodeQueryPage> {
               "${viacepModel.localidade ?? ""} - ${viacepModel.uf ?? ""}",
               style: const TextStyle(fontSize: 22),
             ),
-            Visibility(visible: loading, child: CircularProgressIndicator())
+            Visibility(visible: loading, child: const CircularProgressIndicator())
           ],
         ),
       ),
