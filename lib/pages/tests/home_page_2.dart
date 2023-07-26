@@ -2,6 +2,8 @@ import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:provider/provider.dart';
+import 'package:trilhaapp/service/dark_mode_service.dart';
 import '../../shared/widgets/custom_drawer.dart';
 import 'brasil_fields_page.dart';
 
@@ -31,6 +33,16 @@ class _HomePage2State extends State<HomePage2> with TickerProviderStateMixin {
           "APP_TITLE".tr(),
           style: GoogleFonts.roboto(),
         ),
+        actions: [
+          Center(child: Text("Dark mode")),
+          Consumer<DarkModeService>(builder: (_, darkModeService, widget) {
+            return Switch(
+                value: darkModeService.darkMode,
+                onChanged: (bool value) {
+                  darkModeService.darkMode = value;
+                });
+          })
+        ],
       ),
       body: TabBarView(
         controller: tabController,

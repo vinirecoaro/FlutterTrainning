@@ -1,21 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:trilhaapp/pages/tests/home_page_2.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:trilhaapp/service/dark_mode_service.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      localizationsDelegates: context.localizationDelegates,
-      supportedLocales: context.supportedLocales,
-      locale: context.locale,
-      theme: ThemeData(
-          primarySwatch: Colors.blue, textTheme: GoogleFonts.robotoTextTheme()),
-      debugShowCheckedModeBanner: false,
-      home: const HomePage2(),
+    return MultiProvider(
+      providers: [ChangeNotifierProvider(create: (_) => DarkModeService())],
+      child: Consumer<DarkModeService>(builder: (_, darkModeService, widget) {
+        return MaterialApp(
+          localizationsDelegates: context.localizationDelegates,
+          supportedLocales: context.supportedLocales,
+          locale: context.locale,
+          theme: darkModeService.darkMode
+              ? ThemeData.dark()
+              : ThemeData(
+                  primarySwatch: Colors.blue,
+                  textTheme: GoogleFonts.robotoTextTheme()),
+          debugShowCheckedModeBanner: false,
+          home: const HomePage2(),
+        );
+      }),
     );
   }
 }
