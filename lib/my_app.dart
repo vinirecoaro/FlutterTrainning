@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:trilhaapp/pages/tests/home_page_2.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:trilhaapp/service/counter_service.dart';
 import 'package:trilhaapp/service/dark_mode_service.dart';
 
 class MyApp extends StatelessWidget {
@@ -11,7 +12,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [ChangeNotifierProvider(create: (_) => DarkModeService())],
+      providers: [
+        ChangeNotifierProvider(create: (_) => DarkModeService()),
+        ChangeNotifierProvider<CounterService>(create: (_) => CounterService())
+      ],
       child: Consumer<DarkModeService>(builder: (_, darkModeService, widget) {
         return MaterialApp(
           localizationsDelegates: context.localizationDelegates,

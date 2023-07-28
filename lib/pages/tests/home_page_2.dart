@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:provider/provider.dart';
+import 'package:trilhaapp/pages/tests/counter_page.dart';
 import 'package:trilhaapp/service/dark_mode_service.dart';
 import '../../shared/widgets/custom_drawer.dart';
 import 'brasil_fields_page.dart';
@@ -47,9 +48,10 @@ class _HomePage2State extends State<HomePage2> with TickerProviderStateMixin {
       body: TabBarView(
         controller: tabController,
         children: [
-          Container(
-            color: Colors.yellow,
-          ),
+          CounterPage(),
+          // Container(
+          //   color: Colors.yellow,
+          // ),
           Container(
             color: Colors.blue,
           ),
