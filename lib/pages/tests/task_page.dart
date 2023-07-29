@@ -1,27 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:trilhaapp/model/task.dart';
 
-class TaskPage2 extends StatefulWidget {
-  const TaskPage2({super.key});
+import '../../repositories/task_repository_provider.dart';
 
-  @override
-  State<TaskPage2> createState() => _TaskPage2State();
-}
-
-class _TaskPage2State extends State<TaskPage2> {
-  var _tasks = [];
+class TaskPage2 extends StatelessWidget {
   var descriptionController = TextEditingController();
-  var justNotConcluded = false;
-
-  @override
-  void initState() {
-    super.initState();
-    loadData();
-  }
-
-  loadData() {
-    setState(() {});
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,10 +30,9 @@ class _TaskPage2State extends State<TaskPage2> {
                           child: const Text("Cancelar")),
                       TextButton(
                           onPressed: () async {
-                            Provider.of<TarefaRepository>(context,
+                            Provider.of<TaskProviderRepository>(context,
                                     listen: false)
-                                .adicionar(
-                                    Tarefa(descricaoContoller.text, false));
+                                .add(Task(descriptionController.text, false));
                             Navigator.pop(context);
                           },
                           child: const Text("Salvar"))
@@ -71,44 +54,44 @@ class _TaskPage2State extends State<TaskPage2> {
                       "Apenas não concluídos",
                       style: TextStyle(fontSize: 18),
                     ),
-                    Consumer<TarefaRepository>(
-                        builder: (_, tarefaRepository, Widget) {
+                    Consumer<TaskProviderRepository>(
+                        builder: (_, taskProviderRepository, Widget) {
                       return Switch(
-                          value: tarefaRepository.apenasNaoConcluidos,
+                          value: taskProviderRepository.justNotConcluded,
                           onChanged: (bool value) {
-                            Provider.of<TarefaRepository>(context,
+                            Provider.of<TaskProviderRepository>(context,
                                     listen: false)
-                                .apenasNaoConcluidos = value;
+                                .justNotConcluded = value;
                           });
                     })
                   ],
                 ),
               ),
               Expanded(
-                child: Consumer<TarefaRepository>(
+                child: Consumer<TaskProviderRepository>(
                     builder: (_, tarefaRepository, Widget) {
                   return ListView.builder(
-                      itemCount: tarefaRepository.tarefas.length,
+                      itemCount: tarefaRepository.tasks.length,
                       itemBuilder: (BuildContext bc, int index) {
-                        var tarefa = tarefaRepository.tarefas[index];
+                        var task = tarefaRepository.tasks[index];
                         return Dismissible(
                           onDismissed:
                               (DismissDirection dismissDirection) async {
-                            Provider.of<TarefaRepository>(context,
+                            Provider.of<TaskProviderRepository>(context,
                                     listen: false)
-                                .remover(tarefa.id);
+                                .remove(task.id);
                           },
-                          key: Key(tarefa.descricao),
+                          key: Key(task.description),
                           child: ListTile(
-                            title: Text(tarefa.descricao),
+                            title: Text(task.description),
                             trailing: Switch(
                               onChanged: (bool value) async {
-                                tarefa.concluido = value;
-                                Provider.of<TarefaRepository>(context,
+                                task.concluded = value;
+                                Provider.of<TaskProviderRepository>(context,
                                         listen: false)
-                                    .alterar(tarefa.id, tarefa.concluido);
+                                    .change(task.id, task.concluded);
                               },
-                              value: tarefa.concluido,
+                              value: task.concluded,
                             ),
                           ),
                         );
