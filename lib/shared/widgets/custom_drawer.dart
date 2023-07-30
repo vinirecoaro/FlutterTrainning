@@ -11,6 +11,7 @@ import 'package:trilhaapp/pages/random_numbers/random_numbers_page_hive.dart';
 import 'package:trilhaapp/pages/task/task_http_page.dart';
 import 'package:trilhaapp/pages/tests/auto_size_text_page.dart';
 import 'package:trilhaapp/pages/tests/battery_page.dart';
+import 'package:trilhaapp/pages/tests/brasil_fields_page.dart';
 import 'package:trilhaapp/pages/tests/camera_page.dart';
 import 'package:trilhaapp/pages/tests/connectivity_plus_page.dart';
 import 'package:trilhaapp/pages/tests/geolocator_page.dart';
@@ -461,8 +462,10 @@ class CustonDrawer extends StatelessWidget {
                   )),
               onTap: () async {
                 Navigator.pop(context);
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (bc) => const ConnectivityPlusPage()));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (bc) => const ConnectivityPlusPage()));
               }),
           const Divider(),
           const SizedBox(
@@ -507,8 +510,8 @@ class CustonDrawer extends StatelessWidget {
                   )),
               onTap: () async {
                 Navigator.pop(context);
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (bc) => const QrCodePage()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (bc) => const QrCodePage()));
               }),
           const Divider(),
           const SizedBox(
@@ -530,8 +533,33 @@ class CustonDrawer extends StatelessWidget {
                   )),
               onTap: () async {
                 Navigator.pop(context);
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (bc) => const CameraPage()));
+              }),
+          const Divider(),
+          const SizedBox(
+            height: 10,
+          ),
+          InkWell(
+              child: Container(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                  width: double.infinity,
+                  child: const Row(
+                    children: [
+                      FaIcon(FontAwesomeIcons.brazilianRealSign),
+                      SizedBox(
+                        width: 20,
+                      ),
+                      Text("Brasil mask"),
+                    ],
+                  )),
+              onTap: () async {
+                Navigator.pop(context);
                 Navigator.push(
-                    context, MaterialPageRoute(builder: (bc) => const CameraPage()));
+                    context,
+                    MaterialPageRoute(
+                        builder: (bc) => const BrasilFieldsPage()));
               }),
           const Divider(),
           const SizedBox(

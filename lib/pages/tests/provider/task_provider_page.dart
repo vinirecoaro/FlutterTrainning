@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:trilhaapp/model/task.dart';
+import '../../../repositories/task_repository_provider.dart';
 
-import '../../repositories/task_repository_provider.dart';
-
-class TaskPage2 extends StatelessWidget {
+class TaskProviderPage extends StatelessWidget {
   var descriptionController = TextEditingController();
 
   @override

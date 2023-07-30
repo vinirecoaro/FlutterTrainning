@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class CounterService extends ChangeNotifier {
+class CounterproviderService extends ChangeNotifier {
   int _counter = 0;
   int get counter => _counter;
   void increment() {

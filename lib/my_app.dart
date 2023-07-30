@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:trilhaapp/pages/tests/home_page_2.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:trilhaapp/repositories/task_repository_provider.dart';
-import 'package:trilhaapp/service/counter_service.dart';
+import 'package:trilhaapp/service/counter_provider_service.dart';
 import 'package:trilhaapp/service/dark_mode_service.dart';
 
 class MyApp extends StatelessWidget {
@@ -15,7 +15,8 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => DarkModeService()),
-        ChangeNotifierProvider<CounterService>(create: (_) => CounterService()),
+        ChangeNotifierProvider<CounterproviderService>(
+            create: (_) => CounterproviderService()),
         ChangeNotifierProvider<TaskProviderRepository>(
             create: (_) => TaskProviderRepository())
       ],

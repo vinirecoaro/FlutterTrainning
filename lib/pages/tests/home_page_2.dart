@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:provider/provider.dart';
-import 'package:trilhaapp/pages/tests/counter_page.dart';
-import 'package:trilhaapp/pages/tests/task_page.dart';
+import 'package:trilhaapp/pages/tests/mobx/counter_mobx_page.dart';
+import 'package:trilhaapp/pages/tests/provider/counter_provider_page.dart';
+import 'package:trilhaapp/pages/tests/provider/task_provider_page.dart';
 import 'package:trilhaapp/service/dark_mode_service.dart';
 import '../../shared/widgets/custom_drawer.dart';
 import 'brasil_fields_page.dart';
@@ -49,17 +50,9 @@ class _HomePage2State extends State<HomePage2> with TickerProviderStateMixin {
       body: TabBarView(
         controller: tabController,
         children: [
-          CounterPage(),
-          TaskPage2(),
-          // Container(
-          //   color: Colors.yellow,
-          // ),
-          // Container(
-          //   color: Colors.blue,
-          // ),
-          Container(
-            color: Colors.red,
-          ),
+          const CounterProviderPage(),
+          TaskProviderPage(),
+          CounterMobXPage(),
           Container(
             color: Colors.green,
           ),
@@ -69,9 +62,9 @@ class _HomePage2State extends State<HomePage2> with TickerProviderStateMixin {
       bottomNavigationBar: ConvexAppBar.badge(
         const {0: '99+', 1: Icons.assistant_photo, 2: Colors.redAccent},
         items: const [
-          TabItem(icon: Icons.home, title: 'Home'),
-          TabItem(icon: Icons.map, title: 'Discovery'),
-          TabItem(icon: Icons.add, title: 'Add'),
+          TabItem(icon: Icons.home, title: 'P_1'),
+          TabItem(icon: Icons.map, title: 'P_2'),
+          TabItem(icon: Icons.add, title: 'MobX'),
           TabItem(icon: Icons.message, title: 'Message'),
           TabItem(icon: Icons.people, title: 'Brasil'),
         ],
