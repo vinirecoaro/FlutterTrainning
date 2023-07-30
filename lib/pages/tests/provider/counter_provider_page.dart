@@ -14,7 +14,7 @@ class CounterProviderPage extends StatelessWidget {
         Consumer<CounterproviderService>(builder: (_, counterService, widget) {
           return Text(
             counterService.counter.toString(),
-            style: TextStyle(fontSize: 20),
+            style: const TextStyle(fontSize: 20),
           );
         }),
         TextButton(
@@ -22,7 +22,7 @@ class CounterProviderPage extends StatelessWidget {
               Provider.of<CounterproviderService>(context, listen: false)
                   .increment();
             },
-            child: Text("Incrementar"))
+            child: const Text("Incrementar"))
       ],
     );
   }

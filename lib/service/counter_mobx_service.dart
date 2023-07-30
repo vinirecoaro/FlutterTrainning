@@ -1,6 +1,6 @@
 import 'package:mobx/mobx.dart';
 
-class CounterMobXService {
+class CounterMobXStore {
   final _counter = Observable(0);
   int get counter => _counter.value;
 
@@ -12,7 +12,7 @@ class CounterMobXService {
     _counter.value++;
   }
 
-  CounterMobXService() {
+  CounterMobXStore() {
     increment = Action(_increment);
   }
 }

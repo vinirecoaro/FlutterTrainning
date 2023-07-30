@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:provider/provider.dart';
 import 'package:trilhaapp/pages/tests/mobx/counter_mobx_page.dart';
+import 'package:trilhaapp/pages/tests/mobx/counter_mobx_store_page.dart';
 import 'package:trilhaapp/pages/tests/provider/counter_provider_page.dart';
 import 'package:trilhaapp/pages/tests/provider/task_provider_page.dart';
 import 'package:trilhaapp/service/dark_mode_service.dart';
@@ -53,9 +54,7 @@ class _HomePage2State extends State<HomePage2> with TickerProviderStateMixin {
           const CounterProviderPage(),
           TaskProviderPage(),
           CounterMobXPage(),
-          Container(
-            color: Colors.green,
-          ),
+          CounterMobXStorePage(),
           const BrasilFieldsPage()
         ],
       ),

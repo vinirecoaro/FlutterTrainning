@@ -3,10 +3,10 @@ import 'package:trilhaapp/service/counter_mobx_service.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
 // ignore: must_be_immutable
-class CounterMobXPage extends StatelessWidget {
-  CounterMobXPage({super.key});
+class CounterMobXStorePage extends StatelessWidget {
+  CounterMobXStorePage({super.key});
 
-  var counterMobXService = CounterMobXStore();
+  var counterMobXStore = CounterMobXStore();
 
   @override
   Widget build(BuildContext context) {
@@ -15,13 +15,13 @@ class CounterMobXPage extends StatelessWidget {
       children: [
         Observer(builder: (context) {
           return Text(
-            "${counterMobXService.counter}",
+            "${counterMobXStore.counter}",
             style: const TextStyle(fontSize: 20),
           );
         }),
         TextButton(
             onPressed: () {
-              counterMobXService.increment();
+              counterMobXStore.increment();
             },
             child: const Text("Incrementar"))
       ],
