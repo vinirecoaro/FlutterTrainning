@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:trilhaapp/model/task.dart';
-import '../../../repositories/task_repository_provider.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:trilhaapp/model/task_list_store.dart';
 
-class TaskProviderPage extends StatelessWidget {
+class TaskMobXPage extends StatelessWidget {
   var descriptionController = TextEditingController();
+  var taskListStore = TaskListStore();
 
   @override
   Widget build(BuildContext context) {
@@ -29,9 +29,7 @@ class TaskProviderPage extends StatelessWidget {
                           child: const Text("Cancelar")),
                       TextButton(
                           onPressed: () async {
-                            Provider.of<TaskProviderRepository>(context,
-                                    listen: false)
-                                .add(Task(descriptionController.text, false));
+                            taskListStore.add(descriptionController.text);
                             Navigator.pop(context);
                           },
                           child: const Text("Salvar"))
@@ -44,6 +42,10 @@ class TaskProviderPage extends StatelessWidget {
           margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           child: Column(
             children: [
+              const Text(
+                "Tarefas MobX Store",
+                style: TextStyle(fontSize: 26),
+              ),
               Container(
                 margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                 child: Row(
@@ -53,47 +55,40 @@ class TaskProviderPage extends StatelessWidget {
                       "Apenas não concluídos",
                       style: TextStyle(fontSize: 18),
                     ),
-                    Consumer<TaskProviderRepository>(
-                        builder: (_, taskProviderRepository, Widget) {
+                    Observer(builder: (_) {
                       return Switch(
-                          value: taskProviderRepository.justNotConcluded,
-                          onChanged: (bool value) {
-                            Provider.of<TaskProviderRepository>(context,
-                                    listen: false)
-                                .justNotConcluded = value;
-                          });
+                          value: taskListStore.justNotconcluded,
+                          onChanged: taskListStore.setNotconcluded);
                     })
                   ],
                 ),
               ),
               Expanded(
-                child: Consumer<TaskProviderRepository>(
-                    builder: (_, tarefaRepository, Widget) {
+                child: Observer(builder: (context) {
                   return ListView.builder(
-                      itemCount: tarefaRepository.tasks.length,
+                      itemCount: taskListStore.tasks.length,
                       itemBuilder: (BuildContext bc, int index) {
-                        var task = tarefaRepository.tasks[index];
-                        return Dismissible(
-                          onDismissed:
-                              (DismissDirection dismissDirection) async {
-                            Provider.of<TaskProviderRepository>(context,
-                                    listen: false)
-                                .remove(task.id);
-                          },
-                          key: Key(task.description),
-                          child: ListTile(
-                            title: Text(task.description),
-                            trailing: Switch(
-                              onChanged: (bool value) async {
-                                task.concluded = value;
-                                Provider.of<TaskProviderRepository>(context,
-                                        listen: false)
-                                    .change(task.id, task.concluded);
-                              },
-                              value: task.concluded,
+                        var task = taskListStore.tasks[index];
+                        return Observer(builder: (_) {
+                          return Dismissible(
+                            onDismissed:
+                                (DismissDirection dismissDirection) async {
+                              taskListStore.delete(task.id);
+                            },
+                            key: Key(task.description),
+                            child: ListTile(
+                              title: Text(task.description),
+                              trailing: Switch(
+                                onChanged: (bool value) async {
+                                  task.concluded = value;
+                                  taskListStore.change(task.id,
+                                      task.description, task.concluded);
+                                },
+                                value: task.concluded,
+                              ),
                             ),
-                          ),
-                        );
+                          );
+                        });
                       });
                 }),
               ),

@@ -5,11 +5,11 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:provider/provider.dart';
 import 'package:trilhaapp/pages/tests/mobx/counter_mobx_page.dart';
 import 'package:trilhaapp/pages/tests/mobx/counter_mobx_store_page.dart';
+import 'package:trilhaapp/pages/tests/mobx/task_mobx_page.dart';
 import 'package:trilhaapp/pages/tests/provider/counter_provider_page.dart';
 import 'package:trilhaapp/pages/tests/provider/task_provider_page.dart';
 import 'package:trilhaapp/service/dark_mode_service.dart';
 import '../../shared/widgets/custom_drawer.dart';
-import 'brasil_fields_page.dart';
 
 class HomePage2 extends StatefulWidget {
   const HomePage2({Key? key}) : super(key: key);
@@ -55,7 +55,7 @@ class _HomePage2State extends State<HomePage2> with TickerProviderStateMixin {
           TaskProviderPage(),
           CounterMobXPage(),
           CounterMobXStorePage(),
-          const BrasilFieldsPage()
+          TaskMobXPage()
         ],
       ),
       bottomNavigationBar: ConvexAppBar.badge(
@@ -64,8 +64,8 @@ class _HomePage2State extends State<HomePage2> with TickerProviderStateMixin {
           TabItem(icon: Icons.home, title: 'P_1'),
           TabItem(icon: Icons.map, title: 'P_2'),
           TabItem(icon: Icons.add, title: 'MobX'),
-          TabItem(icon: Icons.message, title: 'Message'),
-          TabItem(icon: Icons.people, title: 'Brasil'),
+          TabItem(icon: Icons.message, title: 'MobX Store'),
+          TabItem(icon: Icons.people, title: 'Task Mobx'),
         ],
         onTap: (int i) => tabController.index = i,
         controller: tabController,

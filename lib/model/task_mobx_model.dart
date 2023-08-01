@@ -5,7 +5,6 @@ import 'package:mobx/mobx.dart';
 part 'task_mobx_model.g.dart';
 
 // This is the class used by rest of your codebase
-// ignore: library_private_types_in_public_api
 class TaskStore = _TaskStore with _$TaskStore;
 
 abstract class _TaskStore with Store {
