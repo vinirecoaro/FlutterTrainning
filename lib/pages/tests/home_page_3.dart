@@ -3,22 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:provider/provider.dart';
-import 'package:trilhaapp/pages/tests/getx/counter_getx_page.dart';
-import 'package:trilhaapp/pages/tests/mobx/counter_mobx_page.dart';
-import 'package:trilhaapp/pages/tests/mobx/counter_mobx_store_page.dart';
-import 'package:trilhaapp/pages/tests/mobx/task_mobx_page.dart';
-import 'package:trilhaapp/pages/tests/provider/task_provider_page.dart';
+import 'package:trilhaapp/pages/tests/getx/task_getx_page.dart';
 import 'package:trilhaapp/service/dark_mode_service.dart';
 import '../../shared/widgets/custom_drawer.dart';
 
-class HomePage2 extends StatefulWidget {
-  const HomePage2({Key? key}) : super(key: key);
+class HomePage3 extends StatefulWidget {
+  const HomePage3({Key? key}) : super(key: key);
 
   @override
-  State<HomePage2> createState() => _HomePage2State();
+  State<HomePage3> createState() => _HomePage3State();
 }
 
-class _HomePage2State extends State<HomePage2> with TickerProviderStateMixin {
+class _HomePage3State extends State<HomePage3> with TickerProviderStateMixin {
   late TabController tabController;
 
   @override
@@ -50,21 +46,21 @@ class _HomePage2State extends State<HomePage2> with TickerProviderStateMixin {
       body: TabBarView(
         controller: tabController,
         children: [
-          TaskProviderPage(),
-          CounterMobXPage(),
-          CounterMobXStorePage(),
-          TaskMobXPage(),
-          CounterGetXPage()
+          TaskGetXPage(),
+          TaskGetXPage(),
+          TaskGetXPage(),
+          TaskGetXPage(),
+          TaskGetXPage(),
         ],
       ),
       bottomNavigationBar: ConvexAppBar.badge(
         const {0: '99+', 1: Icons.assistant_photo, 2: Colors.redAccent},
         items: const [
-          TabItem(icon: Icons.map, title: 'P_2'),
-          TabItem(icon: Icons.add, title: 'MobX'),
-          TabItem(icon: Icons.message, title: 'MobX Store'),
-          TabItem(icon: Icons.people, title: 'Task Mobx'),
-          TabItem(icon: Icons.numbers, title: 'C_GetX'),
+          TabItem(icon: Icons.get_app, title: 'Task GetX'),
+          TabItem(icon: Icons.get_app, title: 'Task GetX'),
+          TabItem(icon: Icons.get_app, title: 'Task GetX'),
+          TabItem(icon: Icons.get_app, title: 'Task GetX'),
+          TabItem(icon: Icons.get_app, title: 'Task GetX'),
         ],
         onTap: (int i) => tabController.index = i,
         controller: tabController,

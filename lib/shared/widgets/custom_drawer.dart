@@ -6,6 +6,7 @@ import 'package:share_plus/share_plus.dart';
 import 'package:trilhaapp/pages/characters/characters_page.dart';
 import 'package:trilhaapp/pages/configurations/configurations_hive_page.dart';
 import 'package:trilhaapp/pages/login_page.dart';
+import 'package:trilhaapp/pages/main_page.dart';
 import 'package:trilhaapp/pages/post_page.dart';
 import 'package:trilhaapp/pages/random_numbers/random_numbers_page_hive.dart';
 import 'package:trilhaapp/pages/task/task_http_page.dart';
@@ -15,10 +16,12 @@ import 'package:trilhaapp/pages/tests/brasil_fields_page.dart';
 import 'package:trilhaapp/pages/tests/camera_page.dart';
 import 'package:trilhaapp/pages/tests/connectivity_plus_page.dart';
 import 'package:trilhaapp/pages/tests/geolocator_page.dart';
+import 'package:trilhaapp/pages/tests/home_page_3.dart';
 import 'package:trilhaapp/pages/tests/percent_indicator_page.dart';
 import 'package:trilhaapp/pages/tests/qr_code_page.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../pages/registration_data/registration_data_hive.dart';
+import '../../pages/tests/home_page_2.dart';
 
 class CustonDrawer extends StatelessWidget {
   const CustonDrawer({super.key});
@@ -65,6 +68,84 @@ class CustonDrawer extends StatelessWidget {
                 ),
                 accountName: const Text("Vinicius Recoaro"),
                 accountEmail: const Text("email@email.com")),
+          ),
+          InkWell(
+              child: Container(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                  width: double.infinity,
+                  child: const Row(
+                    children: [
+                      Icon(Icons.pages),
+                      SizedBox(
+                        width: 20,
+                      ),
+                      Text("Home Page"),
+                    ],
+                  )),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const MainPage(),
+                    ));
+              }),
+          const Divider(),
+          const SizedBox(
+            height: 10,
+          ),
+          InkWell(
+              child: Container(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                  width: double.infinity,
+                  child: const Row(
+                    children: [
+                      Icon(Icons.pages),
+                      SizedBox(
+                        width: 20,
+                      ),
+                      Text("Home Page 2"),
+                    ],
+                  )),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const HomePage2(),
+                    ));
+              }),
+          const Divider(),
+          const SizedBox(
+            height: 10,
+          ),
+          InkWell(
+              child: Container(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                  width: double.infinity,
+                  child: const Row(
+                    children: [
+                      Icon(Icons.pages),
+                      SizedBox(
+                        width: 20,
+                      ),
+                      Text("Home Page 3"),
+                    ],
+                  )),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const HomePage3(),
+                    ));
+              }),
+          const Divider(),
+          const SizedBox(
+            height: 10,
           ),
           InkWell(
               child: Container(
