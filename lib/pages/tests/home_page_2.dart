@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:provider/provider.dart';
+import 'package:trilhaapp/pages/tests/getx/counter_getx_page.dart';
 import 'package:trilhaapp/pages/tests/mobx/counter_mobx_page.dart';
 import 'package:trilhaapp/pages/tests/mobx/counter_mobx_store_page.dart';
 import 'package:trilhaapp/pages/tests/mobx/task_mobx_page.dart';
@@ -23,7 +24,6 @@ class _HomePage2State extends State<HomePage2> with TickerProviderStateMixin {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     tabController = TabController(initialIndex: 0, length: 5, vsync: this);
   }
@@ -38,7 +38,7 @@ class _HomePage2State extends State<HomePage2> with TickerProviderStateMixin {
           style: GoogleFonts.roboto(),
         ),
         actions: [
-          Center(child: Text("Dark mode")),
+          const Center(child: Text("Dark mode")),
           Consumer<DarkModeService>(builder: (_, darkModeService, widget) {
             return Switch(
                 value: darkModeService.darkMode,
@@ -51,21 +51,21 @@ class _HomePage2State extends State<HomePage2> with TickerProviderStateMixin {
       body: TabBarView(
         controller: tabController,
         children: [
-          const CounterProviderPage(),
           TaskProviderPage(),
           CounterMobXPage(),
           CounterMobXStorePage(),
-          TaskMobXPage()
+          TaskMobXPage(),
+          CounterGetXPage()
         ],
       ),
       bottomNavigationBar: ConvexAppBar.badge(
         const {0: '99+', 1: Icons.assistant_photo, 2: Colors.redAccent},
         items: const [
-          TabItem(icon: Icons.home, title: 'P_1'),
           TabItem(icon: Icons.map, title: 'P_2'),
           TabItem(icon: Icons.add, title: 'MobX'),
           TabItem(icon: Icons.message, title: 'MobX Store'),
           TabItem(icon: Icons.people, title: 'Task Mobx'),
+          TabItem(icon: Icons.numbers, title: 'C_GetX'),
         ],
         onTap: (int i) => tabController.index = i,
         controller: tabController,
