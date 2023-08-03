@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trilhaapp/main.dart';
 import 'package:trilhaapp/service/counter_mobx_service.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
@@ -6,7 +7,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 class CounterMobXPage extends StatelessWidget {
   CounterMobXPage({super.key});
 
-  var counterMobXService = CounterMobXStore();
+  var counterMobXService = getIt<CounterMobXStore>();
 
   @override
   Widget build(BuildContext context) {

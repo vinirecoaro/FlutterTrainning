@@ -65,6 +65,7 @@ dependencies:
   mobx: ^2.2.0
   flutter_mobx: ^2.0.6+5
   get: ^4.6.5
+  get_it: ^7.6.0
 
 
 
