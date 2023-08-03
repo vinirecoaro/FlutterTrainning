@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:provider/provider.dart';
-import 'package:trilhaapp/pages/tests/getx/counter_getx_page.dart';
-import 'package:trilhaapp/pages/tests/mobx/counter_mobx_page.dart';
-import 'package:trilhaapp/pages/tests/mobx/counter_mobx_store_page.dart';
-import 'package:trilhaapp/pages/tests/mobx/task_mobx_page.dart';
-import 'package:trilhaapp/pages/tests/provider/task_provider_page.dart';
 import 'package:trilhaapp/service/dark_mode_service.dart';
 import '../../shared/widgets/custom_drawer.dart';
+import '../getx/counter_getx_page.dart';
+import '../mobx/counter_mobx_page.dart';
+import '../mobx/counter_mobx_store_page.dart';
+import '../mobx/task_mobx_page.dart';
+import '../provider/task_provider_page.dart';
 
 class HomePage2 extends StatefulWidget {
   const HomePage2({Key? key}) : super(key: key);

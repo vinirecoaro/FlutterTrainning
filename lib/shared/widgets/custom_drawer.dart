@@ -5,8 +5,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:trilhaapp/pages/characters/characters_page.dart';
 import 'package:trilhaapp/pages/configurations/configurations_hive_page.dart';
-import 'package:trilhaapp/pages/login_page.dart';
-import 'package:trilhaapp/pages/main_page.dart';
+import 'package:trilhaapp/pages/login/login_page.dart';
+import 'package:trilhaapp/pages/home_page/home_page.dart';
 import 'package:trilhaapp/pages/post_page.dart';
 import 'package:trilhaapp/pages/random_numbers/random_numbers_page_hive.dart';
 import 'package:trilhaapp/pages/task/task_http_page.dart';
@@ -16,12 +16,12 @@ import 'package:trilhaapp/pages/tests/brasil_fields_page.dart';
 import 'package:trilhaapp/pages/tests/camera_page.dart';
 import 'package:trilhaapp/pages/tests/connectivity_plus_page.dart';
 import 'package:trilhaapp/pages/tests/geolocator_page.dart';
-import 'package:trilhaapp/pages/tests/home_page_3.dart';
 import 'package:trilhaapp/pages/tests/percent_indicator_page.dart';
 import 'package:trilhaapp/pages/tests/qr_code_page.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../../pages/home_page/home_page_2.dart';
+import '../../pages/home_page/home_page_3.dart';
 import '../../pages/registration_data/registration_data_hive.dart';
-import '../../pages/tests/home_page_2.dart';
 
 class CustonDrawer extends StatelessWidget {
   const CustonDrawer({super.key});
@@ -88,7 +88,7 @@ class CustonDrawer extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const MainPage(),
+                      builder: (context) => const HomePage(),
                     ));
               }),
           const Divider(),

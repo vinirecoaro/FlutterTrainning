@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:trilhaapp/service/app_storage_serveice.dart';
+import 'package:trilhaapp/service/app_storage_service.dart';
 
 class ConfigurationsSharedPreferencesPage extends StatefulWidget {
   const ConfigurationsSharedPreferencesPage({super.key});

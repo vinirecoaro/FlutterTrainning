@@ -1,6 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:trilhaapp/service/app_storage_serveice.dart';
+import 'package:trilhaapp/service/app_storage_service.dart';
 
 class RandomNumbersSharedPreferencesPage extends StatefulWidget {
   const RandomNumbersSharedPreferencesPage({super.key});

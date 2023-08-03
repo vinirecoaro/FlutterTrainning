@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:provider/provider.dart';
-import 'package:trilhaapp/pages/tests/getx/task_getx_page.dart';
 import 'package:trilhaapp/service/dark_mode_service.dart';
 import '../../shared/widgets/custom_drawer.dart';
+import '../getx/task_getx_page.dart';
 
 class HomePage3 extends StatefulWidget {
   const HomePage3({Key? key}) : super(key: key);

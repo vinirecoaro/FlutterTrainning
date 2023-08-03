@@ -3,18 +3,18 @@ import 'package:trilhaapp/pages/list_view_h.dart';
 import 'package:trilhaapp/pages/task/task_sqlite_page.dart';
 import 'package:trilhaapp/pages/zip_code_query.dart';
 import 'package:trilhaapp/shared/widgets/custom_drawer.dart';
-import 'card_page.dart';
-import 'image_assets.dart';
-import 'list_view.dart';
+import '../card_page.dart';
+import '../image_assets.dart';
+import '../list_view.dart';
 
-class MainPage extends StatefulWidget {
-  const MainPage({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
   @override
-  State<MainPage> createState() => _MainPageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _MainPageState extends State<MainPage> {
+class _HomePageState extends State<HomePage> {
   PageController controller = PageController(initialPage: 0);
   int pagePosition = 0;
   @override

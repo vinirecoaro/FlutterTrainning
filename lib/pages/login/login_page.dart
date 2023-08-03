@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:trilhaapp/pages/main_page.dart';
+import 'package:trilhaapp/pages/home_page/home_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -144,7 +144,7 @@ class _LoginPageState extends State<LoginPage> {
                             Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => const MainPage()));
+                                    builder: (context) => const HomePage()));
                           } else {
                             ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
